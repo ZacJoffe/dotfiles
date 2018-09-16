@@ -1,0 +1,86 @@
+! special
+*.foreground:   #e6decf
+*.background:   #142233
+*.cursorColor:  #e6decf
+URxvt*highlightColor:                 #213859
+URxvt*highlightTextColor:             #bfbab0
+
+! black
+*.color0:       #142233
+*.color8:       #2d4359
+
+! red
+*.color9:       #bf4343
+*.color1:       #d95050
+
+! green
+*.color10:       #80a35d
+*.color2:      #8ebf69
+
+! yellow
+*.color11:       #d9974c
+*.color3:      #e6c75a
+
+! blue
+*.color12:       #6999b8
+*.color4:      #87b3d4
+
+! magenta
+*.color13:       #805b8c
+*.color5:      #9974b2
+
+! cyan
+*.color14:       #358c8c
+*.color6:      #3ba1a1
+
+! white
+*.color15:       #bfbfaa
+*.color7:      #e6decf
+
+
+URxvt.background: [100]#142233
+!Urxvt*background: rgba:0000/0000/0200/c800
+!URxvt.font: xft:FuraMono-Regular Powerline:size=10,xft:FontAwesome:size=10
+!URxvt.font: xft:Fira Code:style=Regular:size=11,xft:FontAwesome:size=10
+!URxvt.font:xft:FuraCode Nerd Font:style=Light,Regular
+!URxvt.font:xft:SpaceMono Nerd Font:style=Regular:size:11
+
+
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+
+URxvt*.transparent: true
+URxvt*.shading: 20
+
+URxvt.scrollBar: false
+URxvt.saveLines: 2000
+URxvt.urgentOnBell: True
+!URxvt.cursorBlink: True
+URxvt.internalBorder: 15 
+!URxvt.blurRadius: 20
+!URxvt.fading: 40
+!URxvt.shading: 30
+!URxvt.tintColor: t_black
+!URxvt.fade: 40
+!URxvt.fadeColor: t_black
+
+!URxvt.depth: 32
+!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+!URxvt.iso14755: False
+!URxvt.perl-ext-common:default,font-size,clipboard
+!URxvt.perl-ext-common:font-size
+!URxvt.keysym.C-Up: font-size:increase
+
+URxvt.font:           xft:Roboto Mono:pixelsize=18:antialias=true,xft:Droid Sans Mono for Powerline:pixelsize=16:antialias=true
+URxvt.imFont:         xft:Roboto Mono:pixelsize=18:antialias=true,xft:Droid Sans Mono for Powerline:pixelsize=16:antialias=true
+URxvt.boldFont:       xft:Roboto Mono:pixelsize=18:antialias=true,xft:Droid Sans Mono for Powerline:pixelsize=16:antialias=true
+URxvt.italicFont:     xft:Roboto Mono:pixelsize=18:antialias=true,xft:Droid Sans Mono for Powerline:pixelsize=16:antialias=true
+URxvt.boldItalicFont: xft:Roboto Mono:pixelsize=18:antialias=true,xft:Droid Sans Mono for Powerline:pixelsize=16:antialias=true
+URxvt.letterSpace: -1
+
+
+! change copy/paste commands
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard

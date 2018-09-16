@@ -1,1 +1,0 @@
-/home/zac/.config/i3
