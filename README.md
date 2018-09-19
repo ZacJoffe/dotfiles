@@ -1,13 +1,15 @@
 # Dotfiles
 
-A collection of configuration files for stuff on my system. 
+A collection of configuration files for my bspwm rice.
 
-## What is on here?
+## What is on this repo?
 
-At this point I've made configs for i3, urxvt, and polybar. I'm not completely happy with my setup at the moment, so I'll either continue tweaking it or, more likely, switch to bspwm. I love the idea of tiling, but some thins that i3 do by default aren't to my preference. I'll keep the config files up here for archival sake though.
+Originally, I created this repo for my dotfiles relating to an i3 config I was working on. I got to the point where I realized I didn't love i3, so I decided to try bspwm as an alternative. I find it to be far better than i3, so I doubt I'll work on any of the i3 dotfiles anymore. I'll keep them up here for archival's sake, but for now this is exclusively a bspwm rice.
+
+Once I'm happy with the setup, I'll probably not update it for a while. However, I'll likely get bored of it eventually and I'll continue to keep this repo up to date with my latest rice.
 
 ## Why aren't they organized?
 
-Ideally, you'd just use symbolic links to get all the dotfiles. This, however, does not work as git reads the symlink at a directory, not a file/folder. To get around this, I've lazily copied all of the files into a local repo and pushed them onto GitHub. It would definitely be better to keep all the edits here and symlink them to their respective folders, but I don't love that setup to this is how it is for now. 
+Ideally, you'd just use symbolic links to get all the dotfiles. This, however, does not work as git reads the symlink at a directory, not a file/folder. To get around this, I've lazily copied all of the files into a local repo and pushed them onto GitHub. It would definitely be better to keep all the edits here and symlink them to their respective folders, but I don't love that setup to this is how it is for now.
 
-Perhaps I'll improve the file structure in the future, but as of now this repo is more of an archive than anything else. When I eventually get around to setting up bspwm I'll add config files to this repo.
+Perhaps I'll improve the file structure in the future, but as of now this repo is more of an archive than anything else.
