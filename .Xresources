@@ -84,3 +84,7 @@ URxvt.letterSpace: -1
 ! change copy/paste commands
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+
+! change cursor size
+Xcursor.size: 16
