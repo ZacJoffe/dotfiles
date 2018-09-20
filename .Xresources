@@ -1,6 +1,10 @@
 ! special
 *.foreground:   #e6decf
-*.background:   #142233
+!*.background:   #142233
+!*.background:  #683d7c
+
+! purple
+!*.background:   #3c1a51
 *.cursorColor:  #e6decf
 URxvt*highlightColor:                 #213859
 URxvt*highlightTextColor:             #bfbab0
@@ -38,13 +42,11 @@ URxvt*highlightTextColor:             #bfbab0
 *.color7:      #e6decf
 
 
-URxvt.background: [100]#142233
-!Urxvt*background: rgba:0000/0000/0200/c800
-!URxvt.font: xft:FuraMono-Regular Powerline:size=10,xft:FontAwesome:size=10
-!URxvt.font: xft:Fira Code:style=Regular:size=11,xft:FontAwesome:size=10
-!URxvt.font:xft:FuraCode Nerd Font:style=Light,Regular
-!URxvt.font:xft:SpaceMono Nerd Font:style=Regular:size:11
+!URxvt.background: [100]#142233
 
+! purple
+!URxvt.background: [100]#3c1a51
+URxvt.background: [100]#683d7c
 
 Xft.antialias:  true
 Xft.rgba:       rgb
@@ -53,6 +55,7 @@ Xft.hintstyle:  hintfull
 
 URxvt*.transparent: true
 URxvt*.shading: 20
+URxvt*.tintColor: #683d7c 
 
 URxvt.scrollBar: false
 URxvt.saveLines: 2000
@@ -62,7 +65,7 @@ URxvt.internalBorder: 15
 !URxvt.blurRadius: 20
 !URxvt.fading: 40
 !URxvt.shading: 30
-!URxvt.tintColor: t_black
+!URxvt.tintColor: t_magenta
 !URxvt.fade: 40
 !URxvt.fadeColor: t_black
 
