@@ -1,16 +1,20 @@
 [colors]
 ;background = ${xrdb:color0:#222}
 ;background = #000000
-background = #683d7c
-background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
+
+;background = #B3683d7c
+background-alt = #B3351d3f
+;foreground = #dfdfdf
 foreground-alt = #FFF
+
+foreground          = #ffeeff
+background          = #e61e0528 
+
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/example]
+[bar/top]
 monitor = DP-4
 
 ; circle floating configuartion
@@ -22,8 +26,7 @@ monitor = DP-4
 
 ; normal bar
 width = 100%
-height = 27
-
+height = 24
 
 fixed-center = true
 
@@ -39,14 +42,14 @@ border-color = #00000000
 ;padding-left = 2
 padding-right = 2
 
-;module-margin-left = 2
+module-margin-left = 1
 ;module-margin-right = 2
+;module-margin = 1
 
-font-0 = Roboto Mono:size=11
+font-0 = Roboto Mono:size=11:antialias=true
 font-1 = FontAwesome:size=11
-;font-0 = Roboto Mono:pixelsize=9;1
-;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-;font-2 = FontAwesome:pixelsize=11;1
+font-2 = Material Icons:style=Regular:size=11
+font-3 = Wucon Siji:style=Regular:size=11
 
 ;separator = | 
 
@@ -54,14 +57,14 @@ modules-left = bspwm xwindow
 ;modules-center = date
 modules-right = date
 
-tray-position = 
-tray-padding = 2
+;tray-position = 
+;tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff
 
 wm-restack = bspwm
 
-override-redirect = true
+override-redirect = false
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
@@ -90,24 +93,36 @@ label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
 
+
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %index%
+;ws-icon-default-font = 1
+ws-icon-default = %{T2}▫%{T-}
+
+;label-focused = %index%
+label-focused = %{T2}▪%{T-}
+;label-focused-font = 1
 label-focused-background = ${colors.background-alt}
 ;label-focused-underline = #00bcd4
 label-focused-padding = 2
 
-label-occupied = %index%
+;label-occupied = %index%
+label-occupied = %icon%
+;label-occupied-font = 1
 label-occupied-padding = 2
 
-label-urgent = %index%!
+;label-urgent = %index%!
+label-urgent = %icon%!
+;label-urgent-font = 1
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %index%
+;label-empty = %index%
+label-empty = 
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
+
 
 [module/mpd]
 type = internal/mpd
@@ -160,16 +175,11 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
-
-date = " %a %b %d"
-
-time = %H:%M
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-
-label = %date% %time%
+label = %{F}%date%%{F-}  %{F}%time%%{F-}
+date = %B %d, %Y
+date-alt = %m/%d/%Y
+time = %I:%M %p
+time-alt = ${self.time}
 
 [settings]
 screenchange-reload = true
