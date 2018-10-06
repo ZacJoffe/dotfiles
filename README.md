@@ -8,16 +8,14 @@ Originally, I created this repo for my dotfiles relating to an i3 config I was w
 
 Once I'm happy with the setup, I'll probably not work on it for a while. However, I'll likely get bored of it eventually and I'll continue to keep this repo up to date with my latest rice.
 
-## Why aren't they organized?
+## Why aren't they organized properly?
 
 Ideally, you'd just use symbolic links to get all the dotfiles. This, however, does not work as git reads the symlink at a directory rather than a file or folder. To get around this, I've lazily copied all of the files into a local repo and pushed them onto GitHub. It would definitely be better to keep all the edits here and symlink them to their respective folders, but I don't love that setup to this is how it is for now.
-
-Perhaps I'll improve the file structure in the future, but as of now this repo is more of an archive than anything else.
 
 ## To do list:
 - [X] Finish ricing polybar
 - [X] Fix mouse acceleration
 - [X] Fix gaming performance (likely due to compton)
-- [ ] Organize repo 
+- [X] Organize repo (for the most part)
 - [ ] Cmus integration
 - [ ] Dunst integration (or another notification manager)

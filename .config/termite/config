@@ -51,7 +51,7 @@ scrollback_lines = 10000
 # 20% background transparency (requires a compositor)
 #background = rgba(67, 39, 81, 0.8)
 #background = rgba(69, 3, 102, 0.4)
-background = rgba(85, 72, 91, 0.9)
+#background = rgba(85, 72, 91, 0.8)
 
 # If unset, will reverse foreground and background
 highlight = #2f2f2f
@@ -81,7 +81,7 @@ foreground          = #ffeeff
 foreground_bold     = #ffeeff
 cursor              = #ffeeff
 cursor_foreground   = #1e0528
-background          = rgba(30, 5, 40)
+background          = rgba(30, 5, 40, 0.9)
 
 # 16 color space
 
