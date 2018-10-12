@@ -17,5 +17,5 @@ Ideally, you'd just use symbolic links to get all the dotfiles. This, however, d
 - [X] Fix mouse acceleration
 - [X] Fix gaming performance (likely due to compton)
 - [X] Organize repo (for the most part)
-- [ ] Cmus integration
+- [X] Cmus integration
 - [ ] Dunst integration (or another notification manager)
