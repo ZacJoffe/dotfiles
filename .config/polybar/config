@@ -54,7 +54,7 @@ font-3 = Wucon Siji:style=Regular:size=11
 ;separator = | 
 
 modules-left = bspwm xwindow
-;modules-center = date
+;modules-center = player-cmus
 modules-right = date
 
 ;tray-position = 
@@ -96,6 +96,8 @@ label-indicator-underline = ${colors.secondary}
 
 [module/bspwm]
 type = internal/bspwm
+
+pin-workspaces = false
 
 ;ws-icon-default-font = 1
 ws-icon-default = %{T2}▫%{T-}
@@ -191,5 +193,14 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
+[module/player-cmus]
+type = custom/script
+exec = ~/.config/polybar/cmus.sh
+exec-if = cmus-remote -Q
+interval = 5
+click-left = cmus-remote -n
+click-right = cmus-remote -r
+click-middle = ~/.config/polybar/cmus.sh --toggle
 
 ; vim:ft=dosini
