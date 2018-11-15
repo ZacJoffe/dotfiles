@@ -102,25 +102,34 @@ pin-workspaces = false
 ;ws-icon-default-font = 1
 ws-icon-default = %{T2}▫%{T-}
 
-;label-focused = %index%
-label-focused = %{T2}▪%{T-}
-;label-focused-font = 1
-label-focused-background = ${colors.background-alt}
-;label-focused-underline = #00bcd4
+;index
+label-focused = %index%
+label-focused-font = 1
+
+label-occupied = %index%
+label-occupied-font = 1
+
+label-urgent = %index%!
+label-urgent-font = 1
+label-focused-underline = #f3b8f5
+
+;icons
+;label-focused = %{T2}▪%{T-}
+;label-focused-background = ${colors.background-alt}
+
+;label-occupied = %icon%
+
+;label-urgent = %icon%!
+
+
+;general
 label-focused-padding = 2
 
-;label-occupied = %index%
-label-occupied = %icon%
-;label-occupied-font = 1
 label-occupied-padding = 2
 
-;label-urgent = %index%!
-label-urgent = %icon%!
-;label-urgent-font = 1
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-;label-empty = %index%
 label-empty = 
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
@@ -202,5 +211,11 @@ interval = 5
 click-left = cmus-remote -n
 click-right = cmus-remote -r
 click-middle = ~/.config/polybar/cmus.sh --toggle
+
+[module/popup-calendar]
+type = custom/script
+exec = ~/.config/polybar/popup-calendar.sh
+interval = 5
+click-left = ~/.config/polybar/popup-calendar.sh --popup
 
 ; vim:ft=dosini
