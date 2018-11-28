@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'chrisbra/unicode.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
-Plug 'vim-latex/vim-latex'
+Plug 'lervag/vimtex'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'morhetz/gruvbox'
 Plug 'gabrielelana/vim-markdown'
@@ -31,3 +31,4 @@ let g:lightline = {'colorscheme': 'wombat'}
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_MultipleCompileFormats='pdf, aux'
 let g:Tex_ViewRule_pdf='evince 2>/dev/null'
+let g:vimtex_view_method='zathura'

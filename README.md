@@ -15,7 +15,8 @@ Ideally, you'd just use symbolic links to get all the dotfiles. This, however, d
 ## To do list:
 - [X] Finish ricing polybar
 - [X] Fix mouse acceleration
-- [X] Fix gaming performance (likely due to compton)
 - [X] Organize repo (for the most part)
 - [X] Cmus integration
-- [ ] Dunst integration (or another notification manager)
+- [X] Dunst integration 
+
+Well everything that is here is completely functional. I still would like to improve the dunst integration, perhaps try to use another terminal (like alacritty), and figure out a way to make compton behave with games better. I will also update my vimrc as I add more plugins and continue learning to use vim.
