@@ -18,7 +18,7 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a Yad state=floating
 bspc rule -a Steam desktop='^3' follow=off
-bspc rule -a Discord desktop='^4'
+bspc rule -a discord desktop='^4'
 bspc rule -a Deluge desktop='^5'
 
 # wallpaper with feh
@@ -27,5 +27,5 @@ feh --randomize --bg-fill ~/Wallpapers/Landscapes/*
 # autostart stuff 
 redshift &
 dunst &
-compton -b 
+compton -b
 ~/.config/polybar/launch.sh

@@ -9,6 +9,8 @@ Plug 'vim-latex/vim-latex'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'morhetz/gruvbox'
 Plug 'gabrielelana/vim-markdown'
+Plug 'Valloric/YouCompleteMe'
+Plug 'scrooloose/nerdtree'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()

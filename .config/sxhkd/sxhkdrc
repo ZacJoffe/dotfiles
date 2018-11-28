@@ -20,7 +20,7 @@ super + Escape
 
 # quit bspwm normally
 super + alt + Escape
-	bspc quit
+bspc quit
 
 # close and kill
 super + {_,shift + }w
@@ -135,3 +135,15 @@ XF86AudioNext
 # previous song
 XF86AudioPrev
 	cmus-remote -r
+
+#
+# compton
+#
+
+# turn off
+super + alt + x
+	pkill compton
+
+# turn on
+super + alt + c
+	compton -b
