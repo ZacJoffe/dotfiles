@@ -21,7 +21,11 @@ Here's a list of the programs I'm using:
   - Feh
   - Zathura
 
+<<<<<<< HEAD
 Right now, everything is riced to match the [gruvbox](https://github.com/morhetz/gruvbox] dark colour scheme. It was previously purple themed.
+=======
+Right now, everything is riced to match the [gruvbox](https://github.com/morhetz/gruvbox) dark colour scheme. It was previously purple themed.
+>>>>>>> Fixed readme
 
 ## Goals for future
 - [ ] Try out dwm and/or Awesome
