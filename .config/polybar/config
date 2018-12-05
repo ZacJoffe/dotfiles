@@ -1,18 +1,15 @@
 [colors]
-;background = ${xrdb:color0:#222}
-;background = #000000
+background-alt = #4e4e4e
+foreground-alt = #4e4e4e
 
-;background = #B3683d7c
-background-alt = #B3351d3f
-;foreground = #dfdfdf
-foreground-alt = #FFF
-
-foreground          = #ffeeff
-background          = #e61e0528 
+background = #313131 
+foreground = #ffeacb
 
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+
+underline = #f3b8f5
 
 [bar/top]
 monitor = DP-4
@@ -111,7 +108,7 @@ label-occupied-font = 1
 
 label-urgent = %index%!
 label-urgent-font = 1
-label-focused-underline = #f3b8f5
+label-focused-underline = ${colors.underline}
 
 ;icons
 ;label-focused = %{T2}▪%{T-}

@@ -1,29 +1,35 @@
 set selection-clipboard clipboard
 
-set font                        "Roboto 9"
-set default-bg                  "#151515"
-set default-fg                  "#202020"
+set font                        "Roboto 8"
+set default-bg                  "#262626" #00
+set default-fg                  "#ebdbb2" #01
 
-set statusbar-fg                "#B0B0B0"
-set statusbar-bg                "#202020"
+set statusbar-fg                "#ebdbb2" #04
+set statusbar-bg                "#262626" #01
 
-set inputbar-bg                 "#151515"
-set inputbar-fg                 "#303030"
+set inputbar-bg                 "#262626" #00 currently not used
+set inputbar-fg                 "#ebdbb2" #02
 
-set notification-error-bg       "#AC4142"
-set notification-error-fg       "#E0E0E0"
+set notification-error-bg       "#262626" #08
+set notification-error-fg       "#cc241d" #00
 
-set notification-warning-bg     "#AC4142"
-set notification-warning-fg     "#E0E0E0"
+set notification-warning-bg     "#262626" #08
+set notification-warning-fg     "#d79921" #00
 
-set highlight-color             "#F4BF75"
-set highlight-active-color      "#D28445"
+set highlight-color             "#262626" #0A
+set highlight-active-color      "#ebdbb2" #0D
 
-set completion-highlight-fg     "#303030"
-set completion-highlight-bg     "#75B5AA"
+set completion-highlight-fg     "#4e4e4e" #02
+set completion-highlight-bg     "#87afaf" #0C
 
-set completion-bg               "#303030"
-set completion-fg               "#75B5AA"
+set completion-bg               "#4e4e4e" #02
+set completion-fg               "#ebdbb2" #0C
 
-set notification-bg             "#99CC99"
-set notification-fg             "#F5F5F5"
+set notification-bg             "#262626" #0B
+set notification-fg             "#458588" #00
+
+set recolor-lightcolor          "#262626" #00
+set recolor-darkcolor           "#ebdbb2" #06
+set recolor                     "true"
+
+set recolor-keephue "false"
