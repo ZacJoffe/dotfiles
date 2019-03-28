@@ -121,7 +121,7 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # 
-# cmus 
+# cmus/audio keys
 #
 
 # pause/play
@@ -135,6 +135,10 @@ XF86AudioNext
 # previous song
 XF86AudioPrev
 	cmus-remote -r
+
+# mute
+XF86AudioMute
+	amixer set Master toggle
 
 #
 # compton
