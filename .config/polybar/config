@@ -12,7 +12,7 @@ alert = #bd2c40
 underline = #f3b8f5
 
 [bar/top]
-monitor = DP-4
+monitor = DP-0
 
 ; circle floating configuartion
 ;width = 99%
@@ -51,7 +51,7 @@ font-3 = Wucon Siji:style=Regular:size=11
 ;separator = | 
 
 modules-left = bspwm xwindow
-;modules-center = player-cmus
+modules-center = player-cmus
 modules-right = date
 
 ;tray-position = 
@@ -202,7 +202,8 @@ margin-bottom = 5
 
 [module/player-cmus]
 type = custom/script
-exec = ~/.config/polybar/cmus.sh
+;exec = ~/.config/polybar/cmus.sh
+exec = ~/.config/polybar/scripts/player-cmus.sh
 exec-if = cmus-remote -Q
 interval = 5
 click-left = cmus-remote -n
