@@ -23,7 +23,7 @@ monitor = DP-0
 
 ; normal bar
 width = 100%
-height = 24
+height = 25
 
 fixed-center = true
 
@@ -37,27 +37,32 @@ border-size = 0
 border-color = #00000000
 
 ;padding-left = 2
-padding-right = 2
+padding-right = 0
 
 module-margin-left = 1
 ;module-margin-right = 2
 ;module-margin = 1
 
-font-0 = Roboto Mono:size=11:antialias=true
-font-1 = FontAwesome:size=11
-font-2 = Material Icons:style=Regular:size=11
-font-3 = Wucon Siji:style=Regular:size=11
+;font-0 = Roboto Mono:size=11:antialias=true
+font-0 = Hack:size=11:antialias=true;
+font-1 = FontAwesome:size=11;-3
+font-2 = Material Icons:style=Regular:size=11;-3
+font-3 = Wucon Siji:style=Regular:size=11;-3
 
 ;separator = | 
 
 modules-left = bspwm xwindow
 modules-center = player-cmus
-modules-right = date
+modules-right = date 
 
-;tray-position = 
-;tray-padding = 2
+tray-position = right
+tray-padding = 2
+tray-detached = false
 ;tray-transparent = true
-;tray-background = #0063ff
+tray-background = ${colors.background}
+
+tray-offset-x = 0
+tray-offset-y = 0
 
 wm-restack = bspwm
 
@@ -205,15 +210,15 @@ type = custom/script
 ;exec = ~/.config/polybar/cmus.sh
 exec = ~/.config/polybar/scripts/player-cmus.sh
 exec-if = cmus-remote -Q
-interval = 5
+interval = 1
 click-left = cmus-remote -n
 click-right = cmus-remote -r
 click-middle = ~/.config/polybar/cmus.sh --toggle
 
 [module/popup-calendar]
 type = custom/script
-exec = ~/.config/polybar/popup-calendar.sh
-interval = 5
-click-left = ~/.config/polybar/popup-calendar.sh --popup
+exec = ~/.config/polybar/scripts/popup-calendar.sh
+interval = 1
+click-left = ~/.config/polybar/scripts/popup-calendar.sh --popup
 
 ; vim:ft=dosini

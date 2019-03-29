@@ -23,6 +23,7 @@ bspc rule -a Steam desktop='^4' follow=off
 bspc rule -a discord desktop='^10'
 bspc rule -a Deluge desktop='^1'
 bspc rule -a Zathura state=tiled
+bspc rule -a yad state=floating
 
 # wallpaper with feh
 feh --randomize --bg-fill ~/Wallpapers/Landscapes/*
