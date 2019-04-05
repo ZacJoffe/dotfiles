@@ -10,7 +10,7 @@ Here's a list of the programs I'm using:
 - Terminal: Alacritty
 - Window Manager: bspwm
 - Hotkey Daemon: sxhkd
-- IDE: Visual Studio Code (Settings)[https://gist.github.com/ZacJoffe/1417ebed26108060fcdefd6b1e4895ed]
+- IDE: Visual Studio Code [Settings](https://gist.github.com/ZacJoffe/1417ebed26108060fcdefd6b1e4895ed)
 - Text Editor: Neovim
 - Bar: Polybar
 - Launcher: Rofi
