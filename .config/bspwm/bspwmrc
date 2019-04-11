@@ -14,7 +14,7 @@ bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Gimp state=floating follow=on
 bspc rule -a Chromium desktop='^3'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
@@ -24,6 +24,8 @@ bspc rule -a discord desktop='^10'
 bspc rule -a Deluge desktop='^1'
 bspc rule -a Zathura state=tiled
 bspc rule -a yad state=floating
+bspc rule -a Emacs state=tiled
+bspc rule -a Code desktop='^5'
 
 # wallpaper with feh
 feh --randomize --bg-fill ~/Wallpapers/Landscapes/*
