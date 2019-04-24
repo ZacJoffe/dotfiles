@@ -2,6 +2,16 @@
 
 sxhkd &
 
+wallpaper=$(ls ~/Wallpapers/Landscapes/* | shuf -n 1)
+wal -i $wallpaper -n
+
+source ~/.cache/wal/colors.sh
+
+bspc config normal_border_color "$color1"
+bspc config active_border_color "$color2"
+bspc config focused_border_color "$color15"
+bspc config presel_feedback_color "$color1"
+
 bspc monitor HDMI-0 -d I
 bspc monitor DP-4 -d II
 bspc monitor DP-0 -d II IV V VI VII VIII IX
@@ -28,7 +38,10 @@ bspc rule -a Emacs state=tiled
 bspc rule -a Code desktop='^5'
 
 # wallpaper with feh
-feh --randomize --bg-fill ~/Wallpapers/Landscapes/*
+#feh --randomize --bg-fill ~/Wallpapers/Landscapes/*
+feh --bg-fil $wallpaper
+
+wal_steam -w -d
 
 # autostart stuff 
 redshift &
