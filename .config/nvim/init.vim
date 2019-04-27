@@ -10,9 +10,8 @@ Plug 'liuchengxu/space-vim-dark'
 Plug 'morhetz/gruvbox'
 Plug 'gabrielelana/vim-markdown'
 Plug 'scrooloose/nerdtree'
+Plug 'dylanaraps/wal.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -23,14 +22,15 @@ set tabstop=4
 set shiftwidth=4
 set linebreak
 set clipboard=unnamedplus
-set termguicolors
+"set termguicolors
 
 syntax on
 
-colorscheme gruvbox
-set bg=dark
+"colorscheme gruvbox
+colorscheme wal
+"set bg=dark
 
-let g:lightline = {'colorscheme': 'gruvbox'}
+let g:lightline = {'colorscheme': 'wal'}
 
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat = 'pdf'
