@@ -11,7 +11,11 @@ Plug 'morhetz/gruvbox'
 Plug 'gabrielelana/vim-markdown'
 Plug 'scrooloose/nerdtree'
 Plug 'dylanaraps/wal.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'justinmk/vim-sneak'
+Plug 'bkad/CamelCaseMotion'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -38,6 +42,12 @@ let g:Tex_MultipleCompileFormats='pdf, aux'
 let g:Tex_ViewRule_pdf='evince 2>/dev/null'
 let g:vimtex_view_method='zathura'
 
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 
 map <silent> <C-n> :NERDTreeToggle<CR>
+
+call camelcasemotion#CreateMotionMappings('<leader>')
+
+" map <silent> w <Plug>CamelCaseMotion_w
+" map <silent> b <Plug>CamelCaseMotion_b
+" map <silent> e <Plug>CamelCaseMotion_e
