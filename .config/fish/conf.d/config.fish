@@ -4,3 +4,5 @@ set -x PATH $PATH /usr/local/go/bin $GOPATH/bin
 
 
 cat ~/.cache/wal/sequences
+
+thefuck --alias | source 

@@ -15,6 +15,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'justinmk/vim-sneak'
 Plug 'bkad/CamelCaseMotion'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -51,3 +52,14 @@ call camelcasemotion#CreateMotionMappings('<leader>')
 " map <silent> w <Plug>CamelCaseMotion_w
 " map <silent> b <Plug>CamelCaseMotion_b
 " map <silent> e <Plug>CamelCaseMotion_e
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
