@@ -2,6 +2,7 @@
 
 sxhkd &
 
+
 wallpaper=$(ls ~/Wallpapers/Landscapes/* | shuf -n 1)
 wal -i $wallpaper -n
 
@@ -31,7 +32,7 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a Steam desktop='^4' follow=off
 bspc rule -a discord desktop='^10'
-bspc rule -a Deluge desktop='^1'
+bspc rule -a Deluge-gtk desktop='^1'
 bspc rule -a Zathura state=tiled
 bspc rule -a yad state=floating
 bspc rule -a Emacs state=tiled
