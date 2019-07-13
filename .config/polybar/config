@@ -19,7 +19,7 @@ secondary = ${xrdb:color2:#222}
 alert = ${xrdb:color3:#222}
 
 [bar/top]
-monitor = DP-0
+monitor = DP-4
 
 ; circle floating configuartion
 ;width = 99%
