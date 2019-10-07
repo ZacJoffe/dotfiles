@@ -27,3 +27,5 @@
       "C-S-z" #'unbury-buffer)
 
 (setq projectile-project-search-path '("~/Documents/Code"))
+
+(after! smartparens (smartparens-global-mode -1))
