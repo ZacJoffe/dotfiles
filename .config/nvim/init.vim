@@ -15,6 +15,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'justinmk/vim-sneak'
 Plug 'bkad/CamelCaseMotion'
+Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " List ends here. Plugins become visible to Vim after this call.
@@ -76,3 +77,4 @@ endfunction
 call SetupCommandAbbrs('C', 'CocConfig')
 
 
+inoremap <expr> <Tab> search('\%#[]>)}''"`]', 'n') ? '<Right>' : '<Tab>'
