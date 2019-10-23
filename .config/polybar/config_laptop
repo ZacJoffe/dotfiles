@@ -1,0 +1,405 @@
+[colors]
+;background-alt = #4e4e4e
+;foreground-alt = #4e4e4e
+
+;background = #313131 
+;foreground = #ffeacb
+
+;primary = #ffb52a
+;secondary = #e60053
+;alert = #bd2c40
+
+underline = #f3b8f5
+
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
+
+[bar/top]
+monitor = eDP1
+
+; circle floating configuartion
+;width = 99%
+;height = 27
+;offset-x = 0.5%
+;offset-y = 3
+;radius = 10.0
+
+; normal bar
+width = 100%
+height = 25
+
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+;padding-left = 2
+padding-right = 0
+
+module-margin-left = 1
+;module-margin-right = 2
+;module-margin = 1
+
+;font-0 = Roboto Mono:size=11:antialias=true
+font-0 = Hack:size=11:antialias=true;
+font-1 = FontAwesome:size=11;-3
+font-2 = Material Icons:style=Regular:size=11;-3
+font-3 = Wucon Siji:style=Regular:size=11;-3
+
+;separator = | 
+
+modules-left = bspwm xwindow
+modules-center = player-cmus
+modules-right = battery0 battery1 date
+
+tray-position = right
+tray-padding = 2
+tray-detached = false
+;tray-transparent = true
+tray-background = ${colors.background}
+
+tray-offset-x = 0
+tray-offset-y = 0
+
+wm-restack = bspwm
+
+override-redirect = false
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/herb]
+monitor = eDP1
+
+; circle floating configuartion
+;width = 99%
+;height = 27
+;offset-x = 0.5%
+;offset-y = 3
+;radius = 10.0
+
+; normal bar
+width = 100%
+height = 25
+
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+;padding-left = 2
+padding-right = 0
+
+module-margin-left = 1
+;module-margin-right = 2
+;module-margin = 1
+
+;font-0 = Roboto Mono:size=11:antialias=true
+font-0 = Hack:size=11:antialias=true;
+font-1 = FontAwesome:size=11;-3
+font-2 = Material Icons:style=Regular:size=11;-3
+font-3 = Wucon Siji:style=Regular:size=11;-3
+
+;separator = | 
+
+modules-left = workspaces xwindow
+modules-center = player-cmus
+modules-right = battery0 battery1 date
+
+tray-position = right
+tray-padding = 2
+tray-detached = false
+;tray-transparent = true
+tray-background = ${colors.background}
+
+tray-offset-x = 0
+tray-offset-y = 0
+
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+;label = %title:0:30:...%
+label = %title%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = "? "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+
+[module/bspwm]
+type = internal/bspwm
+
+pin-workspaces = false
+
+;ws-icon-default-font = 1
+ws-icon-default = %{T2}▫%{T-}
+
+;index
+label-focused = %index%
+label-focused-font = 1
+
+label-occupied = %index%
+label-occupied-font = 1
+
+label-urgent = %index%!
+label-urgent-font = 1
+label-focused-underline = ${colors.underline}
+
+;icons
+;label-focused = %{T2}▪%{T-}
+;label-focused-background = ${colors.background-alt}
+
+;label-occupied = %icon%
+
+;label-urgent = %icon%!
+
+
+;general
+label-focused-padding = 2
+
+label-occupied-padding = 2
+
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = 
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = ?
+icon-stop = ?
+icon-play = ?
+icon-pause = ?
+icon-next = ?
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+format-disconnected-underline = ${self.format-connected-underline}
+
+label-connected =  %essid%
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+
+[module/battery0]
+type = internal/battery
+
+full-at = 95
+battery = BAT0
+adapter = AC0
+poll-interval = 30
+
+format-charging = <animation-charging><label-charging>%
+format-discharging = <ramp-capacity><label-discharging>%
+format-full = <ramp-capacity><label-full>%
+label-charging = %percentage%
+label-discharging = %percentage%
+label-full = %percentage%
+format-charging-padding = 0
+format-discharging-padding = 0
+format-full-padding = 0
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+[module/battery1]
+type = internal/battery
+
+full-at = 95
+battery = BAT1
+adapter = AC0
+poll-interval = 60
+
+format-charging = <animation-charging><label-charging>%
+format-discharging = <ramp-capacity><label-discharging>%
+format-full = <ramp-capacity><label-full>%
+label-charging = %percentage%
+label-discharging = %percentage%
+label-full = %percentage%
+format-charging-padding = 1
+format-discharging-padding = 1
+format-full-padding = 1
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+
+[module/date]
+type = internal/date
+label = %{F}%date%%{F-}  %{F}%time%%{F-}
+date = %B %d, %Y
+date-alt = %m/%d/%Y
+time = %I:%M %p
+time-alt = ${self.time}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[module/player-cmus]
+type = custom/script
+;exec = ~/.config/polybar/cmus.sh
+exec = ~/.config/polybar/scripts/player-cmus.sh
+exec-if = cmus-remote -Q
+interval = 1
+click-left = cmus-remote -n
+click-right = cmus-remote -r
+click-middle = ~/.config/polybar/cmus.sh --toggle
+
+[module/popup-calendar]
+type = custom/script
+exec = ~/.config/polybar/scripts/popup-calendar.sh
+interval = 1
+click-left = ~/.config/polybar/scripts/popup-calendar.sh --popup
+
+; vim:ft=dosini
+
+
+[module/workspaces]
+type = internal/xworkspaces
+
+pin-workspaces = false
+
+enable-click = true
+enable-scroll = false
+
+format-padding = 0
+format = "<label-state>"
+
+label-active = " "
+label-active-padding-right = 0
+label-active-padding-left = 0
+
+label-empty = " "
+label-empty-padding-right = 0
+label-empty-padding-left = 0
+
+
+[module/workspaces2]
+type = internal/xworkspaces
+
+pin-workspaces = false
+
+;ws-icon-default-font = 1
+ws-icon-default = %{T2}▫%{T-}
+
+;index
+label-focused = %index%
+label-focused-font = 1
+
+label-occupied = %index%
+label-occupied-font = 1
+
+label-urgent = %index%!
+label-urgent-font = 1
+label-focused-underline = ${colors.underline}
+
+;icons
+;label-focused = %{T2}▪%{T-}
+;label-focused-background = ${colors.background-alt}
+
+;label-occupied = %icon%
+
+;label-urgent = %icon%!
+
+
+;general
+label-focused-padding = 2
+
+label-occupied-padding = 2
+
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = 
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+
