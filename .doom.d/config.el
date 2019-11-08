@@ -9,7 +9,7 @@
   :init
   (setq cquery-executable "/usr/bin/cquery"))
 
-(setq doom-font (font-spec :family "Fira Mono" :size 20))
+(setq doom-font (font-spec :family "Hack" :size 20))
 
 (map! :m "/" #'swiper)
 
@@ -32,13 +32,13 @@
 
 
 ; load doom themes
-(require 'doom-themes)
+;(require 'doom-themes)
 
 ;; Global settings (defaults)
 (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
       doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
-(load-theme 'doom-palenight t)
+(load-theme 'doom-gruvbox t)
 
 (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
 (doom-themes-treemacs-config)
