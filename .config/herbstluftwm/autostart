@@ -26,16 +26,21 @@ hc keybind $Mod-w close
 hc keybind $Mod-Return spawn alacritty # use your $TERMINAL with xterm as fallback
 hc keybind $Mod-space spawn rofi -show drun
 
+hc keybind $Mod-Shift-p spawn /home/zac/go/bin/screenshot -s
+
 # basic movement
 # focusing clients
-hc keybind $Mod-Left  focus left
-hc keybind $Mod-Down  focus down
-hc keybind $Mod-Up    focus up
-hc keybind $Mod-Right focus right
 hc keybind $Mod-h     focus left
 hc keybind $Mod-j     focus down
 hc keybind $Mod-k     focus up
 hc keybind $Mod-l     focus right
+
+# media keys
+hc keybind $Mod-Left  spawn cmus-remote -r
+hc keybind $Mod-Down  spawn cmus-remote -u
+hc keybind $Mod-Up    spawn cmus-remote -u
+hc keybind $Mod-Right spawn cmus-remote -n
+
 
 # moving clients
 hc keybind $Mod-Shift-Left  shift left
@@ -53,6 +58,17 @@ hc keybind $Mod-u       split   bottom  0.5
 hc keybind $Mod-o       split   right   0.5
 # let the current frame explode into subframes
 hc keybind $Mod-Control-space split explode
+
+
+# The following cycles through the available layouts within a frame, but skips
+# layouts, if the layout change wouldn't affect the actual window positions.
+# I.e. if there are two windows within a frame, the grid layout is skipped.
+hc keybind $Mod-Shift-space                                                           \
+            or , and . compare tags.focus.curframe_wcount = 2                   \
+                     . cycle_layout +1 vertical horizontal max vertical grid    \
+               , cycle_layout +1
+
+
 
 # resizing frames
 resizestep=0.05
@@ -88,6 +104,8 @@ hc keybind $Mod-r remove
 hc keybind $Mod-s floating toggle
 hc keybind $Mod-f fullscreen toggle
 hc keybind $Mod-p pseudotile toggle
+
+hc keybind $Mod-Shift-f spawn bash ~/.config/herbstluftwm/maximize.sh
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
@@ -118,7 +136,7 @@ hc set frame_border_normal_color '#101010'
 hc set frame_bg_normal_color '#565656'
 hc set frame_bg_active_color '#345F0C'
 hc set frame_border_width 0
-hc set always_show_frame 1
+hc set always_show_frame 0
 hc set frame_bg_transparent 1
 hc set frame_transparent_width 1
 hc set frame_gap 4
@@ -139,7 +157,7 @@ hc attr theme.background_color '#141414'
 hc set window_gap 10
 hc set frame_padding 2
 hc set smart_window_surroundings 0
-hc set smart_frame_surroundings 1
+hc set smart_frame_surroundings 0
 hc set mouse_recenter_gap 0
 
 # rules
@@ -179,16 +197,14 @@ hc unlock
 # hc detect_monitors
 
 # pad for polybar
-hc pad 0 25 0 0 0
+#hc pad 0 25 0 0 0
 
 # find the panel
-#panel=~/.config/herbstluftwm/panel.sh
-panel=~/.config/polybar/launch_herb.sh
-#[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
+#panel=~/.config/polybar/launch_herb.sh
+#for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
-    "$panel" $monitor &
-done
+#    "$panel" $monitor &
+#done
 
 
 # wallpaper
