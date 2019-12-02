@@ -4,8 +4,9 @@
 
 (setq shell-file-name "/bin/bash")
 (electric-pair-mode 1)
+(add-hook 'prog-mode-hook 'tab-jump-out-mode)
 
-(def-package! cquery
+(use-package! cquery
   :init
   (setq cquery-executable "/usr/bin/cquery"))
 
@@ -30,7 +31,6 @@
 
 (after! smartparens (smartparens-global-mode -1))
 
-
 ; load doom themes
 ;(require 'doom-themes)
 
@@ -45,3 +45,25 @@
 
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
+
+;; Tell emacs where is your personal elisp lib dir
+(add-to-list 'load-path "~/Documents/Code/george-mode")
+;; (add-to-list 'load-path "~/Documents/Code/tab-jump-out")
+
+;; load the packaged named xyz.
+(load "george-mode") ;; best not to include the ending “.el” or “.elc”
+;; (load "tab-jump-out") ;; best not to include the ending “.el” or “.elc”
+
+(defvar-local tab-jump-out-delimiters '(";" "(" ")" "[" "]" "{" "}" "|" "'" "\"" "`" "\\" "<" ">")
+  "The delimiters indicate `tab-jump-out' should jump out.")
+
+(defun tab-jump-out (arg)
+  "Use tab to jump out."
+  (interactive "P")
+  (if (and (char-after)
+           (-contains? tab-jump-out-delimiters (char-to-string (char-after))))
+      (forward-char arg)
+    (tab-jump-out-fallback)))
+
+(global-set-key [remap indent-for-tab-command]
+  'tab-jump-out)
