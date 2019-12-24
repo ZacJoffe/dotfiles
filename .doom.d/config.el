@@ -48,22 +48,51 @@
 
 ;; Tell emacs where is your personal elisp lib dir
 (add-to-list 'load-path "~/Documents/Code/george-mode")
-;; (add-to-list 'load-path "~/Documents/Code/tab-jump-out")
+(add-to-list 'load-path "~/Documents/Code/tab-jump-out")
 
 ;; load the packaged named xyz.
 (load "george-mode") ;; best not to include the ending “.el” or “.elc”
-;; (load "tab-jump-out") ;; best not to include the ending “.el” or “.elc”
+(load "tab-jump-out") ;; best not to include the ending “.el” or “.elc”
 
-(defvar-local tab-jump-out-delimiters '(";" "(" ")" "[" "]" "{" "}" "|" "'" "\"" "`" "\\" "<" ">")
-  "The delimiters indicate `tab-jump-out' should jump out.")
+;; (defvar-local tab-jump-out-delimiters '(";" "(" ")" "[" "]" "{" "}" "|" "'" "\"" "`" "\\" "<" ">")
+;;   "The delimiters indicate `tab-jump-out' should jump out.")
 
-(defun tab-jump-out (arg)
-  "Use tab to jump out."
-  (interactive "P")
-  (if (and (char-after)
-           (-contains? tab-jump-out-delimiters (char-to-string (char-after))))
-      (forward-char arg)
-    (tab-jump-out-fallback)))
+;; (defun tab-jump-out (arg)
+;;   "Use tab to jump out."
+;;   (interactive "P")
+;;   (if (and (char-after)
+;;            (-contains? tab-jump-out-delimiters (char-to-string (char-after))))
+;;       (forward-char arg)
+;;     (tab-jump-out-fallback)))
 
-(global-set-key [remap indent-for-tab-command]
-  'tab-jump-out)
+;; (global-set-key [remap indent-for-tab-command]
+;;   'tab-jump-out)
+
+
+(require 'lsp)
+(add-hook 'd-mode-hook #'lsp)
+(lsp-register-client
+    (make-lsp-client
+        :new-connection (lsp-stdio-connection '("/home/zac/.dub/packages/.bin/dls-latest/dls"))
+        :major-modes '(d-mode)
+        :server-id 'dls))
+
+(defun my-backward-kill-word ()
+  "Kill words backward my way."
+  (interactive)
+  (if (bolp)
+      (backward-delete-char 1)
+    (if (string-match "^\\s-+$" (buffer-substring (point-at-bol) (point)))
+        (kill-region (point-at-bol) (point))
+      (backward-kill-word 1))))
+
+(defun my-backward-kill-line ()
+  "Easy formatting!"
+  (interactive)
+  (my-backward-kill-word)
+  (backward-delete-char 1)
+  ;; (c-electric-backspace 1)
+  (insert " "))
+
+(global-set-key [C-backspace] 'my-backward-kill-word)
+(global-set-key (kbd "<M-backspace>") 'my-backward-kill-line)

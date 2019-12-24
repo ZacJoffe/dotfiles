@@ -6,4 +6,5 @@
 ;; (package! another-package :recipe (:fetcher github :repo "username/repo"))
 ;; (package! builtin-package :disable t)
 (package! cquery)
+(package! d-mode)
 ;; (package! tab-jump-out)
