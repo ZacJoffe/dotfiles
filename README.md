@@ -15,7 +15,7 @@ Here's a list of the programs I'm currently using:
 - Text Editor: [Neovim](https://github.com/neovim/neovim)
 - Bar: [Polybar](https://github.com/polybar/polybar)
 - Launcher: [Rofi](https://github.com/davatorium/rofi)
-- Compositor: [Compton](https://github.com/tryone144/compton)
+- Compositor: [Picom](https://github.com/yshui/picom)
 - Notification Daemon: [Dunst](https://github.com/dunst-project/dunst)
 - Shell: [Fish](https://github.com/fish-shell/fish-shell)
 - Misc:
