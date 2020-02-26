@@ -45,6 +45,19 @@ ulimit -S -n 2048
 # mainly used for tmux
 setopt inc_append_history
 
+# history settings
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+
 # bash style kill word
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
@@ -66,16 +79,23 @@ setopt PUSHDSILENT
 source ~/.zsh_plugins.sh
 
 ## functions to make me less miserable
+# pushd but don't change the directory
 push() {
 	pushd "$@"
 	cd - > /dev/null
 }
 
+# push the currently checked out branch
 gpo() {
 	ref="$(command git symbolic-ref --short HEAD 2> /dev/null)" || return
 	command git push origin $ref
 }
 
+# pull the currently checkout out brannch
+gpull() {
+	ref="$(command git symbolic-ref --short HEAD 2> /dev/null)" || return
+	command git pull origin $ref
+}
 
 # colorful ls
 export CLICOLOR=1
@@ -158,3 +178,9 @@ cdf() {
 	fi
 	cd "$(dirname $file)"
 }
+
+# zsh-history-substring-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
