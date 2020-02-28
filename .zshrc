@@ -19,6 +19,12 @@ export PATH="/Users/zachary.joffe/.cargo/bin:$PATH"
 export VISUAL=nvim
 export EDITOR=nvim
 
+# Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
 # After sourcing zsh-autosuggestions.zsh
 #ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=(backward-kill-word)
 
@@ -29,11 +35,6 @@ fi
 
 # prezto logic
 #source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-
-# Withokta
-if [ -f "/Users/zachary.joffe/.okta/okta-aws" ]; then
-    . "/Users/zachary.joffe/.okta/okta-aws"
-fi
 
 # increase file limit
 ulimit -S -n 2048
@@ -59,7 +60,8 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 
 # bash style kill word
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+#WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+export WORDCHARS='*?_[]~=&;!#$%^(){}'
 
 # WIP theme
 #PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f> '
