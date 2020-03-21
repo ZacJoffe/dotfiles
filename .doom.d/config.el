@@ -39,7 +39,7 @@
 (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
       doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
-(load-theme 'doom-nord t)
+(load-theme 'doom-gruvbox t)
 
 (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
 (doom-themes-treemacs-config)
@@ -48,11 +48,9 @@
 (doom-themes-org-config)
 
 ;; Tell emacs where is your personal elisp lib dir
-(add-to-list 'load-path "~/Documents/Code/george-mode")
 (add-to-list 'load-path "~/Documents/Code/tab-jump-out")
 
 ;; load the packaged named xyz.
-(load "george-mode") ;; best not to include the ending “.el” or “.elc”
 (load "tab-jump-out") ;; best not to include the ending “.el” or “.elc”
 
 ;; (defvar-local tab-jump-out-delimiters '(";" "(" ")" "[" "]" "{" "}" "|" "'" "\"" "`" "\\" "<" ">")
@@ -97,3 +95,12 @@
 
 (global-set-key [C-backspace] 'my-backward-kill-word)
 (global-set-key (kbd "<M-backspace>") 'my-backward-kill-line)
+
+;; (use-package! smooth-scroll
+;;   :config
+;;   (smooth-scroll-mode 1)
+;;   (setq smooth-scroll/vscroll-step-size 5))
+
+(setq
+ hscroll-step 1
+ scroll-conservatively 1000)
