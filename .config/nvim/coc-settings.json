@@ -1,4 +1,7 @@
 {
+	"diagnostic.refreshOnInsertMode": true,
+	"diagnostic.enableSign": false,
+	"diagnostic.enableHighlightLineNumber": true,
 	"languageserver": {
 		"cquery": {
 			"command": "cquery",
