@@ -1,0 +1,8 @@
+{
+    "@\U007f" = ( deleteWordBackward:); // cmd-delete
+    "@\UF702" = moveWordBackward:; // cmd-left
+    "@\UF703" = moveWordForward:; // cmd-right
+    "^\U007F" = deleteWordBackward:; // ctrl-delete (forward delete would be ^\UF728)
+    /* "^\UF702" = moveWordBackward:; // ctrl-left */
+    /* "^\UF703" = moveWordForward:; // ctrl-right */
+}
