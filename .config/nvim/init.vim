@@ -21,6 +21,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'christoomey/vim-tmux-navigator'
 " Plug 'ervandew/supertab'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -127,3 +128,16 @@ let g:go_def_mapping_enabled = 0
 " tmux zoom like feature for vim windows
 nmap <C-W><C-O> <Plug>(zoom-toggle)
 
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+
+" tmux mouse scrolling
+set mouse=a
+
+" navigate vim splits with the 
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-w>h :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-w>j :TmuxNavigateDown<cr>
+nnoremap <silent> <C-w>k :TmuxNavigateUp<cr>
+nnoremap <silent> <C-w>l :TmuxNavigateRight<cr>
