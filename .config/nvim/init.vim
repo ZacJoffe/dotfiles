@@ -19,6 +19,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'dhruvasagar/vim-zoom'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'ervandew/supertab'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -56,6 +58,11 @@ call camelcasemotion#CreateMotionMappings('<leader>')
 " map <silent> w <Plug>CamelCaseMotion_w
 " map <silent> b <Plug>CamelCaseMotion_b
 " map <silent> e <Plug>CamelCaseMotion_e
+
+" add angled brackets to match pairs (so I can use % to jump between them)
+set matchpairs+=<:>
+
+let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''", '<':'>'}
 
 """ COC """
 
@@ -112,3 +119,11 @@ nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 nnoremap <expr> $ v:count ? '$' : 'g$'
 nnoremap <expr> 0 v:count ? '0' : 'g0'
+
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
+
+" tmux zoom like feature for vim windows
+nmap <C-W><C-O> <Plug>(zoom-toggle)
+
