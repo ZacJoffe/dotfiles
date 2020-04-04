@@ -60,6 +60,7 @@ call camelcasemotion#CreateMotionMappings('<leader>')
 " map <silent> b <Plug>CamelCaseMotion_b
 " map <silent> e <Plug>CamelCaseMotion_e
 
+
 " add angled brackets to match pairs (so I can use % to jump between them)
 set matchpairs+=<:>
 
@@ -120,6 +121,10 @@ nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 nnoremap <expr> $ v:count ? '$' : 'g$'
 nnoremap <expr> 0 v:count ? '0' : 'g0'
+
+" fzf
+nnoremap <silent> ; :Files<cr>
+nnoremap <silent> <M-z> :Buffers<cr>
 
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
