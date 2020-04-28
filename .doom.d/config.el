@@ -2,7 +2,14 @@
 
 ;; Place your private configuration here
 
-(setq shell-file-name "/bin/bash")
+;; manually set the shell
+;; (setq shell-file-name "/bin/bash")
+(setq shell-file-name "/usr/bin/zsh")
+
+;; add stuff to path
+(add-to-list 'exec-path "~/.cargo/bin")
+(add-to-list 'exec-path "~/go/bin")
+
 (electric-pair-mode 1)
 (add-hook 'prog-mode-hook 'tab-jump-out-mode)
 
@@ -10,10 +17,12 @@
   :init
   (setq cquery-executable "/usr/bin/cquery"))
 
+;; (setq doom-font (font-spec :family "Hack" :size 20 :weight 'medium))
 (setq doom-font (font-spec :family "Hack" :size 20))
 ;; (setq doom-font (font-spec :family "Fira Mono" :size 20))
 
 (map! :m "/" #'swiper)
+(map! :m "?" #'+default/search-project)
 
 ;(debug-on-variable-change 'company-active-map)
 ;(define-key! company-active-map
@@ -96,11 +105,20 @@
 (global-set-key [C-backspace] 'my-backward-kill-word)
 (global-set-key (kbd "<M-backspace>") 'my-backward-kill-line)
 
-;; (use-package! smooth-scroll
-;;   :config
-;;   (smooth-scroll-mode 1)
-;;   (setq smooth-scroll/vscroll-step-size 5))
 
-(setq
- hscroll-step 1
- scroll-conservatively 1000)
+;; recenter when jumping
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 3) ((control)))
+      scroll-conservatively 3
+      scroll-margin 3
+      maximum-scroll-margin 0.2)
+
+(setq-hook! 'intero-repl-mode-hook scroll-margin 0)
+(setq-hook! 'term-mode-hook scroll-margin 0)
+
+
+;; show trailing whitespace
+(setq-default show-trailing-whitespace nil)
+
+(add-hook! (prog-mode text-mode conf-mode)
+  (defun doom-enable-show-trailing-whitespace-h ()
+    (setq show-trailing-whitespace t)))
