@@ -21,6 +21,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'rust-lang/rust.vim'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'ervandew/supertab'
 " List ends here. Plugins become visible to Vim after this call.
@@ -31,11 +32,13 @@ set encoding=utf-8
 set laststatus=2
 set tabstop=4
 set shiftwidth=4
+set expandtab
 set linebreak
 set clipboard=unnamedplus
 set ignorecase
 set smartcase
 set termguicolors
+set wrap!
 
 syntax on
 
@@ -47,10 +50,12 @@ set bg=dark
 let g:lightline = {'colorscheme': 'gruvbox'}
 
 let g:tex_flavor='latex'
+let g:vimtex_view_general_viewer = 'evince'
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_MultipleCompileFormats='pdf, aux'
 let g:Tex_ViewRule_pdf='evince 2>/dev/null'
-let g:vimtex_view_method='zathura'
+" let g:vimtex_view_method='zathura'
+" let g:vimtex_view_method='evince'
 
 map <silent> <C-s> :NERDTreeToggle<CR>
 
@@ -64,7 +69,8 @@ call camelcasemotion#CreateMotionMappings('<leader>')
 " add angled brackets to match pairs (so I can use % to jump between them)
 set matchpairs+=<:>
 
-let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''", '<':'>'}
+" let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''", '<':'>'}
+let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
 
 """ COC """
 
@@ -119,8 +125,8 @@ inoremap <expr> <Tab> search('\%#[][<>(){};''"`]', 'n') ? '<Right>' : '<Tab>'
 " treat soft wraps as different lines
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
-nnoremap <expr> $ v:count ? '$' : 'g$'
-nnoremap <expr> 0 v:count ? '0' : 'g0'
+" nnoremap <expr> $ v:count ? '$' : 'g$'
+" nnoremap <expr> 0 v:count ? '0' : 'g0'
 
 " fzf
 nnoremap <silent> ; :Files<cr>
