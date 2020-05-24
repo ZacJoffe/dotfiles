@@ -13,9 +13,9 @@
 (electric-pair-mode 1)
 (add-hook 'prog-mode-hook 'tab-jump-out-mode)
 
-(use-package! cquery
-  :init
-  (setq cquery-executable "/usr/bin/cquery"))
+;; (use-package! cquery
+;;   :init
+;;   (setq cquery-executable "/usr/bin/cquery"))
 
 ;; (setq doom-font (font-spec :family "Hack" :size 20 :weight 'medium))
 (setq doom-font (font-spec :family "Hack" :size 20))
@@ -48,7 +48,8 @@
 (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
       doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
-(load-theme 'doom-gruvbox t)
+;; (load-theme 'doom-gruvbox t)
+(load-theme 'doom-spacegrey t)
 
 (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
 (doom-themes-treemacs-config)
@@ -107,16 +108,16 @@
 
 
 ;; recenter when jumping
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 3) ((control)))
-      scroll-conservatively 3
-      scroll-margin 3
-      maximum-scroll-margin 0.2)
+;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 3) ((control)))
+;;       scroll-conservatively 3
+;;       scroll-margin 3
+;;       maximum-scroll-margin 0.2)
 
-(setq-hook! 'intero-repl-mode-hook scroll-margin 0)
-(setq-hook! 'term-mode-hook scroll-margin 0)
+;; (setq-hook! 'intero-repl-mode-hook scroll-margin 0)
+;; (setq-hook! 'term-mode-hook scroll-margin 0)
 
 
-;; show trailing whitespace
+;; ;; show trailing whitespace
 (setq-default show-trailing-whitespace nil)
 
 (add-hook! (prog-mode text-mode conf-mode)
