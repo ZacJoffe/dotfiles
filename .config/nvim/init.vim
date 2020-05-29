@@ -57,6 +57,11 @@ let g:Tex_ViewRule_pdf='evince 2>/dev/null'
 " let g:vimtex_view_method='zathura'
 " let g:vimtex_view_method='evince'
 
+
+" set text wrapping and spell check when loading tex files
+autocmd BufRead,BufNewFile *.tex
+      \ setlocal spell | setlocal wrap!
+
 map <silent> <C-s> :NERDTreeToggle<CR>
 
 call camelcasemotion#CreateMotionMappings('<leader>')
