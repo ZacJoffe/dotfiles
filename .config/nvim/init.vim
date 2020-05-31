@@ -7,6 +7,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 Plug 'scrooloose/nerdtree'
 Plug 'dylanaraps/wal.vim'
 Plug 'tpope/vim-surround'
@@ -41,13 +42,14 @@ set termguicolors
 set wrap!
 
 syntax on
+set background=dark
 
-colorscheme gruvbox
+" let g:gruvbox_material_background = 'soft'
+colorscheme gruvbox-material
 "colorscheme wal
-set bg=dark
 
-"let g:lightline = {'colorscheme': 'wal'}
-let g:lightline = {'colorscheme': 'gruvbox'}
+" let g:lightline = {'colorscheme': 'wal'}
+let g:lightline = {'colorscheme': 'gruvbox_material'}
 
 let g:tex_flavor='latex'
 let g:vimtex_view_general_viewer = 'evince'
@@ -57,10 +59,9 @@ let g:Tex_ViewRule_pdf='evince 2>/dev/null'
 " let g:vimtex_view_method='zathura'
 " let g:vimtex_view_method='evince'
 
-
 " set text wrapping and spell check when loading tex files
 autocmd BufRead,BufNewFile *.tex
-      \ setlocal spell | setlocal wrap!
+      \ setlocal spell | setlocal wrap! | setlocal ts=2 sts=2 sw=2 | setlocal isk-=[]{}
 
 map <silent> <C-s> :NERDTreeToggle<CR>
 
@@ -152,8 +153,16 @@ let g:go_highlight_operators = 1
 set mouse=a
 
 " navigate vim splits with the 
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <C-w>h :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-w>j :TmuxNavigateDown<cr>
-nnoremap <silent> <C-w>k :TmuxNavigateUp<cr>
-nnoremap <silent> <C-w>l :TmuxNavigateRight<cr>
+" let g:tmux_navigator_no_mappings = 1
+" nnoremap <silent> <C-w>h :TmuxNavigateLeft<cr>
+" nnoremap <silent> <C-w>j :TmuxNavigateDown<cr>
+" nnoremap <silent> <C-w>k :TmuxNavigateUp<cr>
+" nnoremap <silent> <C-w>l :TmuxNavigateRight<cr>
+
+:set number relativenumber
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
