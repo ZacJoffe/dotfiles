@@ -4,7 +4,7 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
@@ -12,7 +12,7 @@
   # check the local terminfo database and use 'alacritty' if it is
   # available, otherwise 'xterm-256color' is used.
   #
-  # TERM: xterm-256color
+  TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -57,7 +57,7 @@ scrolling:
   #faux_multiplier: 3
 
   # Scroll to the bottom when new text is written to the terminal.
-  auto_scroll: false
+  # auto_scroll: false
 
 # Spaces per Tab (changes require restart)
 #
@@ -66,7 +66,7 @@ scrolling:
 # Some applications, like Emacs, rely on knowing about the width of a tab.
 # To prevent unexpected behavior in these applications, it's also required to
 # change the `it` value in terminfo when altering this setting.
-tabspaces: 8
+# tabspaces: 8
 
 # Font configuration (changes require restart)
 #
@@ -126,15 +126,15 @@ font:
   # `WINIT_HIDPI_FACTOR=1.0 alacritty` to scale the font.
 
 # Display the time it takes to redraw each frame.
-debug.render_timer: false
+# debug.render_timer: false
 
 # Use custom cursor colors. If `true`, the `colors.cursor.foreground` and
 # `colors.cursor.background` colors will be used to display the cursor.
 # Otherwise the cell colors are inverted for the cursor.
-custom.style: false
+# custom.style: false
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+# draw_bold_text_with_bright_colors: true
 
 # Colors (Tomorrow Night Bright)
 
@@ -146,36 +146,31 @@ draw_bold_text_with_bright_colors: true
   #indexed_colors:
   #  - { index: 16, color: '0x000000' }
 
-# Colors (Gruvbox dark)
+# Colors (Gruvbox material dark)
 colors:
-  # Default colors
   primary:
-    # hard contrast: background = '0x1d2021'
     background: '0x282828'
-    # soft contrast: background = '0x32302f'
-    foreground: '0xebdbb2'
+    foreground: '0xdfbf8e'
 
-  # Normal colors
   normal:
-    black:   '0x282828'
-    red:     '0xcc241d'
-    green:   '0x98971a'
-    yellow:  '0xd79921'
-    blue:    '0x458588'
-    magenta: '0xb16286'
-    cyan:    '0x689d6a'
-    white:   '0xa89984'
+    black:   '0x665c54'
+    red:     '0xea6962'
+    green:   '0xa9b665'
+    yellow:  '0xe78a4e'
+    blue:    '0x7daea3'
+    magenta: '0xd3869b'
+    cyan:    '0x89b482'
+    white:   '0xdfbf8e'
 
-  # Bright colors
   bright:
     black:   '0x928374'
-    red:     '0xfb4934'
-    green:   '0xb8bb26'
-    yellow:  '0xfabd2f'
-    blue:    '0x83a598'
+    red:     '0xea6962'
+    green:   '0xa9b665'
+    yellow:  '0xe3a84e'
+    blue:    '0x7daea3'
     magenta: '0xd3869b'
-    cyan:    '0x8ec07c'
-    white:   '0xebdbb2'
+    cyan:    '0x89b482'
+    white:   '0xdfbf8e'
 # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
