@@ -1,45 +1,30 @@
-# ruby
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+export PATH="$PATH:$HOME/bin"
+export GOPATH=$HOME/go 
+export GOROOT="/usr/lib/go"
 
-# path stuff
-export PATH=/usr/local/go:$PATH
-export PATH=/Users/zachary.joffe/go:$PATH
-export PATH=/Users/zachary.joffe/go/bin:$PATH
-export PATH=/Users/zachary.joffe/.emacs.d/bin:$PATH
-export PATH=/usr/local/opt/ruby/bin:$PATH
-export PATH=/usr/local/opt/mariadb@10.1/bin:$PATH
-
-export GOROOT=/usr/local/go
-export GOPATH=/Users/zachary.joffe/go
-export PATH=$PATH:$(go env GOPATH)/bin
-export PATH=$PATH:"/usr/local/bin"
-export PATH="/Users/zachary.joffe/.cargo/bin:$PATH"
-
-# use nvim for default editor
-export VISUAL=nvim
-export EDITOR=nvim
-
-# After sourcing zsh-autosuggestions.zsh
-#ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=(backward-kill-word)
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/doom-emacs/bin"
+export PATH=$PATH:$GOPATH/bin
 
 # start tmux with zsh
-if [ "$TMUX" = "" ]; then 
-	tmux -u -2
-fi
-
-# prezto logic
-#source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-
-# Withokta
-if [ -f "/Users/zachary.joffe/.okta/okta-aws" ]; then
-    . "/Users/zachary.joffe/.okta/okta-aws"
-fi
+# if [ "$TMUX" = "" ]; then 
+# 	tmux -u -2
+# fi
 
 # increase file limit
 ulimit -S -n 2048
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# exa instead of ls
+alias l='exa'
+alias la='exa -a'
+alias ll='exa -lah'
+alias ls='exa --color=auto'
+
+# bat instead of cat
+alias cat='bat --style=plain'
 
 # separate history for terminal sessions
 # mainly used for tmux
@@ -99,6 +84,7 @@ gpull() {
 
 # colorful ls
 export CLICOLOR=1
+alias ls='ls --color=auto'
 
 # colorful cd
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
@@ -184,3 +170,9 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
+
+# use C-x C-e to open command in neovim
+export EDITOR=nvim
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
