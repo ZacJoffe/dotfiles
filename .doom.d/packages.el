@@ -7,4 +7,5 @@
 ;; (package! builtin-package :disable t)
 (package! cquery)
 (package! d-mode)
+(package! smooth-scroll)
 ;; (package! tab-jump-out)

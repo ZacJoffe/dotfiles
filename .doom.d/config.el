@@ -11,15 +11,15 @@
 (add-to-list 'exec-path "~/go/bin")
 
 (electric-pair-mode 1)
+(add-hook 'after-change-major-mode-hook (lambda() (electric-pair-mode -1)))
 (add-hook 'prog-mode-hook 'tab-jump-out-mode)
 
 ;; (use-package! cquery
 ;;   :init
 ;;   (setq cquery-executable "/usr/bin/cquery"))
 
-;; (setq doom-font (font-spec :family "Hack" :size 20 :weight 'medium))
-(setq doom-font (font-spec :family "Hack" :size 20))
-;; (setq doom-font (font-spec :family "Fira Mono" :size 20))
+; (setq doom-font (font-spec :family "Hack" :size 20))
+(setq doom-font (font-spec :family "Hack" :size 22))
 
 (map! :m "/" #'swiper)
 (map! :m "?" #'+default/search-project)
