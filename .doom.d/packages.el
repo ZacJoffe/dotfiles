@@ -8,4 +8,7 @@
 (package! cquery)
 (package! d-mode)
 (package! smooth-scroll)
+(package! sublimity)
+(package! company-lsp)
+(package! company-flx)
 ;; (package! tab-jump-out)

@@ -21,8 +21,13 @@
 ; (setq doom-font (font-spec :family "Hack" :size 20))
 (setq doom-font (font-spec :family "Hack" :size 22))
 
-(map! :m "/" #'swiper)
+; (map! :m "/" #'swiper)
+(map! :m "/" #'counsel-grep-or-swiper)
 (map! :m "?" #'+default/search-project)
+
+; use rg instead of grep for counsel grp
+(setq counsel-grep-base-command
+ "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
 
 ;(debug-on-variable-change 'company-active-map)
 ;(define-key! company-active-map
@@ -49,7 +54,7 @@
       doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
 ;; (load-theme 'doom-gruvbox t)
-(load-theme 'doom-spacegrey t)
+(load-theme 'doom-material t)
 
 (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
 (doom-themes-treemacs-config)
@@ -117,9 +122,70 @@
 ;; (setq-hook! 'term-mode-hook scroll-margin 0)
 
 
-;; ;; show trailing whitespace
+; show trailing whitespace
 (setq-default show-trailing-whitespace nil)
 
 (add-hook! (prog-mode text-mode conf-mode)
   (defun doom-enable-show-trailing-whitespace-h ()
     (setq show-trailing-whitespace t)))
+
+; smoother scrolling
+(require 'sublimity)
+(require 'sublimity-scroll)
+(sublimity-mode 1)
+
+; vim-like relative line numbers
+(setq display-line-numbers-type 'relative)
+
+(require 'company-lsp)
+(push 'company-lsp company-backends)
+
+; company fuzzy matching
+(with-eval-after-load 'company
+  (company-flx-mode +1))
+
+; use clangd as lsp client for c/c++
+(after! lsp-clients
+  (set-lsp-priority! 'clangd 1)
+  (setq lsp-clients-clangd-args '("--log" "verbose" "--query-driver=/usr/bin/clang++")))
+
+; org roam
+(after! org-roam
+        (map! :leader
+            :prefix "n"
+            :desc "org-roam" "l" #'org-roam
+            :desc "org-roam-insert" "i" #'org-roam-insert
+            :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
+            :desc "org-roam-find-file" "f" #'org-roam-find-file
+            :desc "org-roam-show-graph" "g" #'org-roam-show-graph
+            :desc "org-roam-capture" "c" #'org-roam-capture))
+
+(use-package! org-journal
+  :config
+  (setq org-journal-dir "~/org/roam/"))
+
+; display superscripts/subscripts normally
+(setq font-latex-fontify-script nil)
+
+;; Make movement keys work like they should
+(define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+; Make horizontal movement cross lines
+(setq-default evil-cross-lines t)
+
+; https://dotdoom.rgoswami.me/config.html#org94a9690
+(defun clang-format-buffer-smart ()
+(interactive)
+  "Reformat buffer if .clang-format exists in the projectile root."
+  (when (f-exists? (expand-file-name ".clang-format" (projectile-project-root)))
+    (+format/buffer)))
+
+(defun clang-format-buffer-smart-on-save ()
+(interactive)
+  "Add auto-save hook for clang-format-buffer-smart."
+  (add-hook 'before-save-hook 'clang-format-buffer-smart nil t))
+
+(add-hook! (c-mode c++-mode cc-mode) #'clang-format-buffer-on-save)
+
