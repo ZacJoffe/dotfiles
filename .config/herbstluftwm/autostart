@@ -26,7 +26,11 @@ hc keybind $Mod-w close
 hc keybind $Mod-Return spawn alacritty # use your $TERMINAL with xterm as fallback
 hc keybind $Mod-space spawn rofi -show drun
 
-hc keybind $Mod-Shift-p spawn /home/zac/go/bin/screenshot -s
+hc keybind $Mod-slash spawn emacs
+hc keybind $Mod-backslash spawn firefox
+
+hc keybind $Mod-Shift-p spawn /home/zac/go/bin/screenshot -su
+hc keybind $Mod-Print spawn /home/zac/go/bin/screenshot -s
 
 # basic movement
 # focusing clients
@@ -215,8 +219,8 @@ feh --bg-fil $wallpaper
 
 killall -q redshift
 killall -q dunst
-killall -q compton
+killall -q picom
 
 redshift &
 dunst &
-compton -b
+picom -b
