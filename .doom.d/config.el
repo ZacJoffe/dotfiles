@@ -19,7 +19,7 @@
 ;;   (setq cquery-executable "/usr/bin/cquery"))
 
 ; (setq doom-font (font-spec :family "Hack" :size 20))
-(setq doom-font (font-spec :family "Hack" :size 22))
+(setq doom-font (font-spec :family "DejaVu Sans Mono" :size 22 :weight 'light))
 
 ; (map! :m "/" #'swiper)
 (map! :m "/" #'counsel-grep-or-swiper)
@@ -54,7 +54,7 @@
       doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
 ;; (load-theme 'doom-gruvbox t)
-(load-theme 'doom-material t)
+(load-theme 'doom-sourcerer t)
 
 (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
 (doom-themes-treemacs-config)
@@ -137,17 +137,19 @@
 ; vim-like relative line numbers
 (setq display-line-numbers-type 'relative)
 
-(require 'company-lsp)
-(push 'company-lsp company-backends)
+;; (require 'company-lsp)
+;; (push 'company-lsp company-backends)
 
 ; company fuzzy matching
 (with-eval-after-load 'company
   (company-flx-mode +1))
 
 ; use clangd as lsp client for c/c++
-(after! lsp-clients
-  (set-lsp-priority! 'clangd 1)
-  (setq lsp-clients-clangd-args '("--log" "verbose" "--query-driver=/usr/bin/clang++")))
+; (after! lsp-clients
+  ; (set-lsp-priority! 'clangd 1)
+  ; (setq lsp-clients-clangd-args '("--log" "verbose" "--query-driver=/usr/bin/clang++")))
+
+(setq ccls-executable "/usr/bin/ccls")
 
 ; org roam
 (after! org-roam
@@ -182,10 +184,23 @@
   (when (f-exists? (expand-file-name ".clang-format" (projectile-project-root)))
     (+format/buffer)))
 
-(defun clang-format-buffer-smart-on-save ()
-(interactive)
-  "Add auto-save hook for clang-format-buffer-smart."
-  (add-hook 'before-save-hook 'clang-format-buffer-smart nil t))
+; (defun clang-format-buffer-smart-on-save ()
+; (interactive)
+;   "Add auto-save hook for clang-format-buffer-smart."
+;   (add-hook 'before-save-hook 'clang-format-buffer-smart nil t))
 
-(add-hook! (c-mode c++-mode cc-mode) #'clang-format-buffer-on-save)
+; (add-hook! (c-mode c++-mode cc-mode) #'clang-format-buffer-on-save)
 
+;(after! lsp-clients
+;  (set-lsp-priority! 'clangd 1))  ; ccls has priority 0
+
+; zoom in all buffers
+(defadvice text-scale-increase (around all-buffers (arg) activate)
+  (dolist (buffer (buffer-list))
+    (with-current-buffer buffer
+      ad-do-it)))
+
+; pdf dark mode hook
+(add-hook 'pdf-tools-enabled-hook 'pdf-view-midnight-minor-mode)
+
+(setq deft-directory "~/Documents/Google/deft")

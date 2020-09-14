@@ -4,7 +4,7 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-env:
+#env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
@@ -12,7 +12,7 @@ env:
   # check the local terminfo database and use 'alacritty' if it is
   # available, otherwise 'xterm-256color' is used.
   #
-  TERM: xterm-256color
+  # TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -54,20 +54,8 @@ scrolling:
   # to allow mouse scrolling for applications like `man`.
   #
   # Specifying `0` will disable faux scrolling.
-  #faux_multiplier: 3
-
-  # Scroll to the bottom when new text is written to the terminal.
-  # auto_scroll: false
-
-# Spaces per Tab (changes require restart)
-#
-# This setting defines the width of a tab in cells.
-#
-# Some applications, like Emacs, rely on knowing about the width of a tab.
-# To prevent unexpected behavior in these applications, it's also required to
-# change the `it` value in terminfo when altering this setting.
-# tabspaces: 8
-
+  # faux_multiplier: 3
+  
 # Font configuration (changes require restart)
 #
 # Important font attributes like antialiasing, subpixel aa, and hinting can be
@@ -105,7 +93,7 @@ font:
     # style: Italic
 
   # Point size
-  size: 10.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -126,15 +114,15 @@ font:
   # `WINIT_HIDPI_FACTOR=1.0 alacritty` to scale the font.
 
 # Display the time it takes to redraw each frame.
-# debug.render_timer: false
+debug.render_timer: false
 
 # Use custom cursor colors. If `true`, the `colors.cursor.foreground` and
 # `colors.cursor.background` colors will be used to display the cursor.
 # Otherwise the cell colors are inverted for the cursor.
-# custom.style: false
+custom.style: false
 
 # If `true`, bold text is drawn using the bright color variants.
-# draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: true
 
 # Colors (Tomorrow Night Bright)
 
@@ -146,7 +134,6 @@ font:
   #indexed_colors:
   #  - { index: 16, color: '0x000000' }
 
-# Colors (Gruvbox material dark)
 colors:
   primary:
     background: '0x282828'
@@ -171,6 +158,7 @@ colors:
     magenta: '0xd3869b'
     cyan:    '0x89b482'
     white:   '0xdfbf8e'
+
 # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
@@ -192,7 +180,7 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 
@@ -237,7 +225,7 @@ selection:
   # clipboard.
   save_to_clipboard: false
 
-dynamic_title: true
+window.dynamic_title: true
 
 mouse.hide_when_typing: false
 
