@@ -1,21 +1,21 @@
-# This is Git's per-user configuration file.
 [user]
-	name = Zac Joffe
-	email = zacharyjoffe@gmail.com
+  name = Zac Joffe
+  email = zacharyjoffe@gmail.com
 [core]
-	editor = nvim
+  editor = "nvim"
 [merge]
-	tool = vimdiff
+  tool = vimdiff
+[mergetool]
+  prompt = true
 [mergetool "vimdiff"]
-	path = nvim
-[diff]
-	tool = vimdiff
-[difftool "vimdiff"]
-	path = nvim
+  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [difftool]
-	prompt = false
-[alias]
-	d = difftool
-	ia = !git add $(git ls-files --modified --others --exclude-standard | fzf -m)
-    id = !git diff $(git ls-files --modified --others --exclude-standard | fzf -m)
-    is = !git show $(git log --pretty=oneline | cut -c1-7 | fzf -m)
+  prompt = false
+[diff]
+  tool = vimdiff
+[url "https://:@github.com"]
+	insteadOf = https://github.com
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[url "git@github.com"]
+	insteadOf = https://github.com
