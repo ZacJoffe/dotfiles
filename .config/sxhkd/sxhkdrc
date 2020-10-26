@@ -6,6 +6,14 @@
 super + Return
 	alacritty
 
+# text editor
+super + slash
+	emacsclient --create-frame
+
+# web browser
+super + backslash
+	firefox
+
 # program launcher
 super + @space
 	rofi -show drun # dmenu_run
@@ -120,47 +128,54 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# 
+#
 # cmus/audio keys
 #
 
 # pause/play
 XF86AudioPlay
-	cmus-remote -u
+	cmus-remote -u || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 # next song
 XF86AudioNext
-	cmus-remote -n
+	cmus-remote -n || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 # previous song
 XF86AudioPrev
-	cmus-remote -r
+	cmus-remote -r || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 
 # mute
 XF86AudioMute
 	amixer set Master toggle
 
 #
-# compton
+# picom
 #
 
 # turn off
 super + alt + x
-	pkill compton
+	pkill picom
 
 # turn on
 super + alt + c
-	compton -b
+	picom --experimental-backends -b
 
 #
-# maim 
+# maim
 #
 
 # screenshot, copy to clipboard
 super + Print
 	maim -s | xclip -selection clipboard -t image/png
 
+super + z
+	maim -s | xclip -selection clipboard -t image/png
+
+
 # screenshot, upload to imgur
 super + shift + Print
-	maim -s /tmp/screenshot.png; bash ~/Documents/Code/Shell/Imgur\ Uploader/uploader.sh /tmp/screenshot.png | xclip -selection clipboard $argv;
+	maim -su /tmp/screenshot.png; bash ~/Documents/Code/imgur-uploader/uploader.sh /tmp/screenshot.png | xclip -selection clipboard $argv;
+
+super + shift + z
+	maim -su /tmp/screenshot.png; bash ~/Documents/Code/imgur-uploader/uploader.sh /tmp/screenshot.png | xclip -selection clipboard $argv;
 
