@@ -1,0 +1,11 @@
+" General Settings
+set configversion 1.9
+set update.lastchecktime 1587957701584
+set smoothscroll true
+set modeindicator false
+
+" normal searching
+unbind <C-f>
+
+" For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+" vim: set filetype=tridactyl
