@@ -18,6 +18,9 @@ bspc config presel_feedback_color "$color1"
 # faster refresh rate for moving floating windows
 bspc config pointer_motion_interval 7ms
 
+# padding for tint2 bar
+bspc config top_padding 30
+
 # home setup
 # bspc monitor HDMI-0 -d I
 # bspc monitor DP-2 -d II IV V VI VII VIII IX
@@ -62,5 +65,8 @@ redshift &
 dunst &
 picom --experimental-backends -b
 jack_control start
-~/.config/polybar/launch.sh
+# ~/.config/polybar/launch.sh
+tint2 &
 
+# tint2 correct behaviour for overlapping windows
+xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2)
