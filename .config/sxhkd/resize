@@ -1,0 +1,13 @@
+#!/usr/bin/env dash
+
+direction="$1"
+sense="$2"
+
+# First we try to resize using the bottom/right borders. If this fails (e.g. tiled) we fall back to top/left.
+if [ "$direction" = "x" ]; then
+    bspc node --resize "right" "${sense}20" "0" ||
+    bspc node --resize "left" "${sense}20" "0"
+else
+    bspc node --resize "bottom" "0" "${sense}20" ||
+    bspc node --resize "top" "0" "${sense}20"
+fi
