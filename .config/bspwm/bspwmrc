@@ -67,6 +67,7 @@ picom --experimental-backends -b
 jack_control start
 # ~/.config/polybar/launch.sh
 tint2 &
+greenclip daemon
 
 # tint2 correct behaviour for overlapping windows
 xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2)
