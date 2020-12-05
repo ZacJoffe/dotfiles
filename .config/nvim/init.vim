@@ -12,6 +12,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'dylanaraps/wal.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'justinmk/vim-sneak'
 Plug 'bkad/CamelCaseMotion'
 Plug 'jiangmiao/auto-pairs'
@@ -24,6 +25,8 @@ Plug 'dhruvasagar/vim-zoom'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'rust-lang/rust.vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'chrisbra/sudoedit.vim'
+Plug 'arcticicestudio/nord-vim'
 " Plug 'ervandew/supertab'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -45,11 +48,13 @@ syntax on
 set background=dark
 
 " let g:gruvbox_material_background = 'soft'
-colorscheme gruvbox-material
+" colorscheme gruvbox-material
+colorscheme nord
 "colorscheme wal
 
 " let g:lightline = {'colorscheme': 'wal'}
-let g:lightline = {'colorscheme': 'gruvbox_material'}
+" let g:lightline = {'colorscheme': 'gruvbox_material'}
+let g:lightline = {'colorscheme': 'nord'}
 
 let g:tex_flavor='latex'
 let g:vimtex_view_general_viewer = 'evince'
@@ -61,7 +66,7 @@ let g:Tex_ViewRule_pdf='evince 2>/dev/null'
 
 " set text wrapping and spell check when loading tex files
 autocmd BufRead,BufNewFile *.tex
-      \ setlocal spell | setlocal wrap! | setlocal ts=2 sts=2 sw=2 | setlocal isk-=[]{}
+      \ setlocal spell | setlocal wrap! | setlocal iskeyword-={}[] | setlocal ts=2 sts=2 sw=2
 
 map <silent> <C-s> :NERDTreeToggle<CR>
 
@@ -166,3 +171,7 @@ set mouse=a
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
+
+
+" vim repeat setup
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
