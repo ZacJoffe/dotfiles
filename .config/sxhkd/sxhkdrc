@@ -1,10 +1,13 @@
+#!/usr/bin/env bash
+
 #
 # wm independent hotkeys
 #
 
 # terminal emulator
 super + Return
-	alacritty
+	termite
+	# alacritty
 
 # text editor
 super + slash
@@ -141,13 +144,17 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Expand/contract a window by moving one of its side outward/inward
-super + r : {h,j,k,l}
+super + shift + r : {h,j,k,l}
     STEP=20; SELECTION={1,2,3,4}; \
     bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
     bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
 
+# reset the layout of the current desktop
+super + r
+    bspc node @/ -E
+
 #
-# cmus/audio keys
+# cmus/spotify audio keys
 #
 
 # pause/play
