@@ -12,14 +12,25 @@
 
 (electric-pair-mode 1)
 (add-hook 'after-change-major-mode-hook (lambda() (electric-pair-mode -1)))
+
+; enable tab-jump-out minor mode everywhere
 (add-hook 'prog-mode-hook 'tab-jump-out-mode)
+(add-hook 'org-mode-hook 'tab-jump-out-mode)
+(add-hook 'markdown-mode-hook 'tab-jump-out-mode)
+
+
+; hook for flyspell in org/markdown mode
+(add-hook 'org-mode-hook 'flyspell-mode)
+(add-hook 'markdown-mode-hook 'flyspell-mode)
 
 ;; (use-package! cquery
 ;;   :init
 ;;   (setq cquery-executable "/usr/bin/cquery"))
 
-; (setq doom-font (font-spec :family "Hack" :size 20))
-(setq doom-font (font-spec :family "DejaVu Sans Mono" :size 22 :weight 'light))
+; (setq doom-font (font-spec :family "Hack" :size 22 :weight 'semi-light))
+; (setq doom-font (font-spec :family "DejaVu Sans Mono" :size 22 :weight 'light))
+; (setq doom-font (font-spec :family "Roboto Mono" :size 22 :weight 'semi-light))
+(setq doom-font (font-spec :family "Iosevka" :size 22 :weight 'semi-light))
 
 ; (map! :m "/" #'swiper)
 (map! :m "/" #'counsel-grep-or-swiper)
@@ -39,12 +50,14 @@
           "TAB" #'company-complete-selection
           [tab] #'company-complete-selection))
       :m
-      "C-z" #'bury-buffer
-      "C-S-z" #'unbury-buffer)
+      "C-a" #'bury-buffer
+      "C-S-a" #'unbury-buffer)
+(map! :m "C-z" #'buffer-menu)
 
 (setq projectile-project-search-path '("~/Documents/Code"))
 
-(after! smartparens (smartparens-global-mode -1))
+;(after! smartparens (smartparens-global-mode -1)) ; no long correct https://github.com/hlissner/doom-emacs/blob/develop/docs/faq.org#how-to-disable-smartparensautomatic-parentheses-completion
+(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
 ; load doom themes
 ;(require 'doom-themes)
@@ -54,9 +67,9 @@
       doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
 ;; (load-theme 'doom-gruvbox t)
-(load-theme 'doom-sourcerer t)
+(load-theme 'doom-nord t)
 
-(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+(setq doom-themes-treemacs-theme "doom-nord") ; use the colorful treemacs theme
 (doom-themes-treemacs-config)
 
 ;; Corrects (and improves) org-mode's native fontification.
