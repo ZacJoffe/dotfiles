@@ -1,7 +1,7 @@
 configuration {
 /*	modi: "window,run,ssh";*/
 	width: 33;
-	lines: 100;
+	lines: 50;
 /*	columns: 1;*/
 	font: "Iosevka 16";
 /*	bw: 1;*/

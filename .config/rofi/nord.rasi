@@ -42,7 +42,7 @@
 #listview {
     /* lines: 10; */
     padding: 2px 0px 0px;
-    scrollbar: true;
+    scrollbar: false;
 }
 #element {
     padding: 0px 0px 0px 7px;
