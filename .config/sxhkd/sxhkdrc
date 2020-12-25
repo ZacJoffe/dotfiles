@@ -6,14 +6,14 @@
 
 # terminal emulator
 super + Return
-	termite
-	# alacritty
+	alacritty
+	# termite
 
-# text editor
+# text editor - emacs
 super + slash
 	emacsclient --create-frame
 
-# web browser
+# web browser - firefox
 super + backslash
 	firefox
 
@@ -25,9 +25,14 @@ super + @space
 super + Escape
 	pkill -USR1 -x sxhkd
 
-# Show clipmenu
+# show clipmenu
 super + v
 	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
+# show a formatted list of sxhkd hotkeys in rofi with fuzzy searching
+super + F1
+    ~/.config/sxhkd/show_help.sh
+
 #
 # bspwm hotkeys
 #
@@ -48,9 +53,9 @@ super + m
 super + y
 	bspc node newest.marked.local -n newest.!automatic.local
 
-# swap the current node and the biggest node
+# swap the current node and the biggest node on the current desktop
 super + g
-	bspc node -s biggest
+	bspc node -s biggest.local
 
 #
 # state/flags
@@ -69,8 +74,15 @@ super + ctrl + {m,x,y,z}
 #
 
 # focus the node in the given direction
-super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+#super + {_,shift + }{h,j,k,l}
+#	bspc node -{f,s} {west,south,north,east}
+
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+
+super + shift + {h,j,k,l}
+	~/.config/sxhkd/smart_move.sh {west,south,north,east}
+
 
 # focus the node for the given path jump
 super + {p,b,comma,period}
@@ -79,6 +91,13 @@ super + {p,b,comma,period}
 # focus the next/previous node in the current desktop
 super + {_,shift + }n
 	bspc node -f {next,prev}.local
+
+# focus the last node/desktop
+alt + Tab
+	bspc node -f last.local
+
+alt + shift + Tab
+	bspc desktop -f last
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -97,6 +116,10 @@ super + {o,i}
 # focus given desktop
 super + {1-9,0}
 	bspc desktop -f '^{1-9,10}'
+
+# select window to focus with rofi
+super + shift + @space
+    ~/.config/sxhkd/select_node.sh
 
 # send to the given desktop and follow
 super + shift + {1-9,0}
@@ -144,13 +167,18 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Expand/contract a window by moving one of its side outward/inward
-super + shift + r : {h,j,k,l}
-    STEP=20; SELECTION={1,2,3,4}; \
-    bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
-    bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
+# TODO - currently broken, see for reference: https://my-take-on.tech/2020/07/03/some-tricks-for-sxhkd-and-bspwm/
+#super + shift + r : {h,j,k,l}
+#    STEP=20; SELECTION={1,2,3,4}; \
+#    bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
+#    bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
+
+# reset layout ratios of current desktop
+super + r
+    bspc node @/ -B
 
 # reset the layout of the current desktop
-super + r
+super + shift + r
     bspc node @/ -E
 
 #
@@ -159,17 +187,20 @@ super + r
 
 # pause/play
 XF86AudioPlay
-	cmus-remote -u || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+    playerctl play-pause
+	#cmus-remote -u || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 # next song
 XF86AudioNext
-	cmus-remote -n || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+    playerctl next
+	#cmus-remote -n || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 # previous song
 XF86AudioPrev
-	cmus-remote -r || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+    playerctl previous
+	#cmus-remote -r || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 
-# mute
+# mute master volume
 XF86AudioMute
 	amixer set Master toggle
 
@@ -189,18 +220,17 @@ super + alt + c
 # maim
 #
 
-# screenshot, copy to clipboard
+# screenshot, upload to imgur
 super + Print
-	maim -s | xclip -selection clipboard -t image/png
+	maim -su /tmp/screenshot.png; bash ~/Documents/Code/imgur-uploader/uploader.sh /tmp/screenshot.png | xclip -selection clipboard $argv;
 
 super + z
+	maim -su /tmp/screenshot.png; bash ~/Documents/Code/imgur-uploader/uploader.sh /tmp/screenshot.png | xclip -selection clipboard $argv;
+
+# screenshot, copy to clipboard
+super + shift + Print
 	maim -s | xclip -selection clipboard -t image/png
 
-
-# screenshot, upload to imgur
-super + shift + Print
-	maim -su /tmp/screenshot.png; bash ~/Documents/Code/imgur-uploader/uploader.sh /tmp/screenshot.png | xclip -selection clipboard $argv;
-
 super + shift + z
-	maim -su /tmp/screenshot.png; bash ~/Documents/Code/imgur-uploader/uploader.sh /tmp/screenshot.png | xclip -selection clipboard $argv;
+	maim -s | xclip -selection clipboard -t image/png
 

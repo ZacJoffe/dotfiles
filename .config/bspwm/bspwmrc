@@ -1,17 +1,17 @@
 #! /bin/sh
 
 ## monitors setup
-# current setup is two monitors - left is the main one (16:9) with 9 workspaces,
-# right monitor an ultrawide with only 1 workspace
+# current setup is two monitors - left is the main one ultrawide (21:9) with 7 workspaces,
+# right monitor an normal 16:9 monitor with only 3 workspaces
 #
 # generally, I use that right monitor for slack/discord and music
-bspc monitor DP-4 -d I II III IV V VI VII VIII IX
-bspc monitor DP-2 -d X
+bspc monitor DP-2 -d I II III IV V VI VII
+bspc monitor DP-4 -d VIII IX X
 
 # swallow - not used currently
 # pidof bspswallow || bspswallow & #
 
-# randomly select a wallpaper,
+# randomly select a wallpaper
 wallpaper=$(ls ~/Wallpapers/Landscapes/* | shuf -n 1)
 wal -i $wallpaper -n
 source ~/.cache/wal/colors.sh
@@ -21,12 +21,16 @@ feh --bg-fil $wallpaper
 
 ## bspc configs
 # pywal border colors
-# note - I currently do not use borders, might play around with them at some
-# point in the future though
-bspc config normal_border_color "$color1"
-bspc config active_border_color "$color2"
-bspc config focused_border_color "$color15"
-bspc config presel_feedback_color "$color1"
+# bspc config normal_border_color "$color1"
+# bspc config active_border_color "$color2"
+# bspc config focused_border_color "$color15"
+# bspc config presel_feedback_color "$color1"
+
+# nord border colors
+bspc config normal_border_color "#4c566a"
+bspc config active_border_color "#eceff4"
+bspc config focused_border_color "#88c0d0"
+bspc config presel_feedback_color "#88c0d0"
 
 # faster refresh rate for moving floating windows
 bspc config pointer_motion_interval 7ms
@@ -35,7 +39,7 @@ bspc config pointer_motion_interval 7ms
 bspc config top_padding 30
 
 # borderless gaps, standard split ratio
-bspc config border_width         0
+bspc config border_width         5
 bspc config window_gap           15
 bspc config split_ratio          0.5
 
