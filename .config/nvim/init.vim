@@ -17,7 +17,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'bkad/CamelCaseMotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'psliwka/vim-smoothie'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
@@ -64,9 +64,13 @@ let g:Tex_ViewRule_pdf='evince 2>/dev/null'
 " let g:vimtex_view_method='zathura'
 " let g:vimtex_view_method='evince'
 
-" set text wrapping and spell check when loading tex files
+" set text wrapping and spell check when loading tex/md files
 autocmd BufRead,BufNewFile *.tex
       \ setlocal spell | setlocal wrap! | setlocal iskeyword-={}[] | setlocal ts=2 sts=2 sw=2
+
+autocmd BufRead,BufNewFile *.md
+      \ setlocal spell | setlocal wrap! | setlocal iskeyword-={}[] | setlocal ts=2 sts=2 sw=2
+
 
 map <silent> <C-s> :NERDTreeToggle<CR>
 
@@ -84,17 +88,6 @@ set matchpairs+=<:>
 let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
 
 """ COC """
-
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
 
 function! SetupCommandAbbrs(from, to)
   exec 'cnoreabbrev <expr> '.a:from
@@ -127,11 +120,14 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 
-" escape a bunch of characters using tab
+" if autocomplete menu is open, select option with tab
+"
+" otherwise, escape a bunch of characters using tab
 " the syntax is black magic, as far as I can tell this works for the following
 " chars:
-" "[", "]", "<", ">", "(", ")", "{", "}", ";", "'", "\""
-inoremap <expr> <Tab> search('\%#[][<>(){};''"`]', 'n') ? '<Right>' : '<Tab>'    
+" "[", "]", "<", ">", "(", ")", "{", "}", ";", "'", "\"", "$"
+"inoremap <expr> <Tab> search('\%#[][<>(){};''"`]', 'n') ? '<Right>' : '<Tab>'
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : search('\%#[][<>(){};''"`$]', 'n') ? '<Right>' : '<Tab>'
 
 " treat soft wraps as different lines
 nnoremap <expr> j v:count ? 'j' : 'gj'
