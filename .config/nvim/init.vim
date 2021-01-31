@@ -171,3 +171,13 @@ set mouse=a
 
 " vim repeat setup
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+
+" return word count for latex file
+function! WC()
+    let filename = expand("%")
+    let cmd = "detex " . filename . " | wc -w | tr -d [:space:]"
+    let result = system(cmd)
+    echo result . " words"
+endfunction
+
+command WC call WC()
