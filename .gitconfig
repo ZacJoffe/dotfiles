@@ -3,19 +3,18 @@
   email = zacharyjoffe@gmail.com
 [core]
   editor = "nvim"
-[merge]
-  tool = vimdiff
+	eol = lf
+	autocrlf = false
 [mergetool]
-  prompt = true
+  prompt = false
+[merge]
+  tool = nvimdiff
 [mergetool "vimdiff"]
   cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [difftool]
   prompt = false
 [diff]
-  tool = vimdiff
-[url "https://:@github.com"]
-	insteadOf = https://github.com
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-[url "git@github.com"]
-	insteadOf = https://github.com
+  tool = nvimdiff
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
