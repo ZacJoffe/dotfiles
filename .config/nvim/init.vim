@@ -22,11 +22,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'dhruvasagar/vim-zoom'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'chrisbra/sudoedit.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'rhysd/vim-grammarous'
+Plug 'mbbill/undotree'
 " Plug 'ervandew/supertab'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -136,7 +138,7 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 " nnoremap <expr> 0 v:count ? '0' : 'g0'
 
 " fzf
-nnoremap <silent> ; :Files<cr>
+"nnoremap <silent> ; :Files<cr>
 nnoremap <silent> <M-z> :Buffers<cr>
 
 " disable vim-go :GoDef short cut (gd)
@@ -172,12 +174,37 @@ set mouse=a
 " vim repeat setup
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
-" return word count for latex file
+" return word count for latex document or any other opened file
 function! WC()
     let filename = expand("%")
-    let cmd = "detex " . filename . " | wc -w | tr -d [:space:]"
-    let result = system(cmd)
-    echo result . " words"
+    let extension = expand('%:e')
+    if extension==".tex"
+        let cmd = "detex " . filename . " | wc -w | tr -d [:space:]"
+        let result = system(cmd)
+        echo result . " words"
+    else
+        let cmd = "wc -w " . filename . " | sed 's/\\s.*$//' | tr -d [:space:]"
+        let result = system(cmd)
+        echo result . " words"
+    endif
 endfunction
 
+" move right one character
+inoremap <C-e> <Right>
+
+" C-c for escape
+nmap <C-c> <esc>
+imap <C-c> <esc>
+vmap <C-c> <esc>
+omap <C-c> <esc>
+
 command WC call WC()
+
+" languagetool support
+let g:grammarous#languagetool_cmd = 'languagetool'
+
+set nocompatible
+filetype plugin on
+
+" turn on spell checking by default
+set spell
