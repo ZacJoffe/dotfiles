@@ -5,12 +5,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'chrisbra/unicode.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
-Plug 'liuchengxu/space-vim-dark'
-Plug 'morhetz/gruvbox'
-Plug 'sainnhe/gruvbox-material'
-Plug 'scrooloose/nerdtree'
-Plug 'dylanaraps/wal.vim'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'justinmk/vim-sneak'
@@ -25,11 +19,11 @@ Plug 'dhruvasagar/vim-zoom'
 Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'chrisbra/sudoedit.vim'
 Plug 'arcticicestudio/nord-vim'
-Plug 'rhysd/vim-grammarous'
 Plug 'mbbill/undotree'
-" Plug 'ervandew/supertab'
+Plug 'machakann/vim-sandwich'
+Plug 'rbgrouleff/bclose.vim' " dependency for ranger
+Plug 'francoiscabrol/ranger.vim'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -48,14 +42,7 @@ set wrap!
 
 syntax on
 set background=dark
-
-" let g:gruvbox_material_background = 'soft'
-" colorscheme gruvbox-material
 colorscheme nord
-"colorscheme wal
-
-" let g:lightline = {'colorscheme': 'wal'}
-" let g:lightline = {'colorscheme': 'gruvbox_material'}
 let g:lightline = {'colorscheme': 'nord'}
 
 let g:tex_flavor='latex'
@@ -74,14 +61,7 @@ autocmd BufRead,BufNewFile *.md
       \ setlocal spell | setlocal wrap! | setlocal iskeyword-={}[] | setlocal ts=2 sts=2 sw=2
 
 
-map <silent> <C-s> :NERDTreeToggle<CR>
-
 call camelcasemotion#CreateMotionMappings('<leader>')
-
-" map <silent> w <Plug>CamelCaseMotion_w
-" map <silent> b <Plug>CamelCaseMotion_b
-" map <silent> e <Plug>CamelCaseMotion_e
-
 
 " add angled brackets to match pairs (so I can use % to jump between them)
 set matchpairs+=<:>
@@ -139,7 +119,13 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " fzf
 "nnoremap <silent> ; :Files<cr>
-nnoremap <silent> <M-z> :Buffers<cr>
+"nnoremap <silent> <M-z> :Buffers<cr>
+nmap <leader><tab> <Plug>(fzf-maps-n)
+imap <leader><tab> <Plug>(fzf-maps-i)
+xmap <leader><tab> <Plug>(fzf-maps-x)
+nnoremap <Leader>bf :GFiles<CR>
+nnoremap <Leader>bF :Files<CR>
+nnoremap <Leader><Space> :Buffers<CR>
 
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
@@ -200,11 +186,8 @@ omap <C-c> <esc>
 
 command WC call WC()
 
-" languagetool support
-let g:grammarous#languagetool_cmd = 'languagetool'
-
 set nocompatible
 filetype plugin on
 
-" turn on spell checking by default
-set spell
+" do not clear clipboard on exit
+autocmd VimLeave * call system("xsel -ib", getreg('+'))

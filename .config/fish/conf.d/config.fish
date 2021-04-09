@@ -15,6 +15,9 @@ set -x FZF_DEFAULT_OPTS '--color=fg:#d8dee9,bg:#2e3440,hl:#81a1c1,fg+:#d8dee9,bg
 # set manpager to bat
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
+# bat theme
+set -x BAT_THEME Nord
+
 # aliases
 # exa instead of ls
 alias l="exa"
@@ -25,3 +28,4 @@ alias ls='exa --color=auto'
 # bat instead of cat
 alias cat='bat --style=plain'
 
+thefuck --alias | source 
