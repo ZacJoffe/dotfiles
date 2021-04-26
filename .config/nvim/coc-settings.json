@@ -2,22 +2,10 @@
 	"diagnostic.refreshOnInsertMode": true,
 	"diagnostic.enableSign": false,
 	"diagnostic.enableHighlightLineNumber": true,
-	"languageserver": {
-		"cquery": {
-			"command": "cquery",
-			"args": ["--log-file=/tmp/cq.log"],
-			"filetypes": ["c", "cpp"],
-			"rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-			"initializationOptions": {
-				"cacheDirectory": "/tmp/cquery"
-			}
-		},
-		"golang": {
-		  "command": "gopls",
-		  "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-		  "filetypes": ["go"]
-		}
-	},
     "suggest.enablePreselect": true,
-    "suggest.noselect": false
+    "suggest.noselect": false,
+    /* "coc.preferences.hoverTarget": "echo", */
+    "suggest.enablePreview": true,
+    "signature.target": "echo",
+    "clangd.disableSnippetCompletion": false
 }
