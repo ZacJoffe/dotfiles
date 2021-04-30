@@ -9,3 +9,5 @@ unbind <C-f>
 
 " For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
 " vim: set filetype=tridactyl
+
+blacklistadd leetcode.com
