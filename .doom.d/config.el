@@ -36,7 +36,7 @@
 ; (map! :m "/" #'swiper)
 ;(map! :m "/" #'counsel-grep-or-swiper)
 ;(map! :m "?" #'+default/search-project)
-(map! :m "?" #'swiper-isearch)
+(map! :m "?" #'consult-line)
 
 ; use rg instead of grep for counsel grp
 (setq counsel-grep-base-command
