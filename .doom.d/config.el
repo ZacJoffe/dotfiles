@@ -30,11 +30,13 @@
 ; (setq doom-font (font-spec :family "Hack" :size 22 :weight 'semi-light))
 ; (setq doom-font (font-spec :family "DejaVu Sans Mono" :size 22 :weight 'light))
 ; (setq doom-font (font-spec :family "Roboto Mono" :size 22 :weight 'semi-light))
-(setq doom-font (font-spec :family "Iosevka" :size 22 :weight 'semi-light))
+(setq doom-font (font-spec :family "Iosevka" :size 26 :weight 'light)
+      doom-variable-pitch-font (font-spec :family "Iosevka"))
 
 ; (map! :m "/" #'swiper)
-(map! :m "/" #'counsel-grep-or-swiper)
-(map! :m "?" #'+default/search-project)
+;(map! :m "/" #'counsel-grep-or-swiper)
+;(map! :m "?" #'+default/search-project)
+(map! :m "?" #'swiper-isearch)
 
 ; use rg instead of grep for counsel grp
 (setq counsel-grep-base-command
@@ -217,3 +219,15 @@
 (add-hook 'pdf-tools-enabled-hook 'pdf-view-midnight-minor-mode)
 
 (setq deft-directory "~/Documents/Google/deft")
+
+; https://www.reddit.com/r/emacs/comments/e72m9j/evilsurround_shortcuts_in_doom_coming_from/f9uvh9t/
+(after! evil-surround
+  (let ((pairs '((?g "$" . "$") 
+                 (?h "(" . ")") 
+                 (?j "[" . "]") 
+                 (?k "{" . "}") 
+                 (?l "<" . ">") 
+                 (?ø "'" . "'") 
+                 (?æ "\"" . "\""))))
+    (prependq! evil-surround-pairs-alist pairs)
+    (prependq! evil-embrace-evil-surround-keys (mapcar #'car pairs))))
