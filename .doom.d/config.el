@@ -14,9 +14,9 @@
 (add-hook 'after-change-major-mode-hook (lambda() (electric-pair-mode -1)))
 
 ; enable tab-jump-out minor mode everywhere
-(add-hook 'prog-mode-hook 'tab-jump-out-mode)
-(add-hook 'org-mode-hook 'tab-jump-out-mode)
-(add-hook 'markdown-mode-hook 'tab-jump-out-mode)
+;(add-hook 'prog-mode-hook 'tab-jump-out-mode)
+;(add-hook 'org-mode-hook 'tab-jump-out-mode)
+;(add-hook 'markdown-mode-hook 'tab-jump-out-mode)
 
 
 ; hook for flyspell in org/markdown mode
@@ -68,43 +68,25 @@
 (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
       doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
-;; (load-theme 'doom-gruvbox t)
 (load-theme 'doom-nord t)
-
 (setq doom-themes-treemacs-theme "doom-nord") ; use the colorful treemacs theme
-(doom-themes-treemacs-config)
 
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
 
 ;; Tell emacs where is your personal elisp lib dir
-(add-to-list 'load-path "~/Documents/Code/tab-jump-out")
+;(add-to-list 'load-path "~/Documents/Code/tab-jump-out")
 
 ;; load the packaged named xyz.
-(load "tab-jump-out") ;; best not to include the ending “.el” or “.elc”
+;(load "tab-jump-out") ;; best not to include the ending “.el” or “.elc”
 
-;; (defvar-local tab-jump-out-delimiters '(";" "(" ")" "[" "]" "{" "}" "|" "'" "\"" "`" "\\" "<" ">")
-;;   "The delimiters indicate `tab-jump-out' should jump out.")
-
-;; (defun tab-jump-out (arg)
-;;   "Use tab to jump out."
-;;   (interactive "P")
-;;   (if (and (char-after)
-;;            (-contains? tab-jump-out-delimiters (char-to-string (char-after))))
-;;       (forward-char arg)
-;;     (tab-jump-out-fallback)))
-
-;; (global-set-key [remap indent-for-tab-command]
-;;   'tab-jump-out)
-
-
-(require 'lsp)
-(add-hook 'd-mode-hook #'lsp)
-(lsp-register-client
-    (make-lsp-client
-        :new-connection (lsp-stdio-connection '("/home/zac/.dub/packages/.bin/dls-latest/dls"))
-        :major-modes '(d-mode)
-        :server-id 'dls))
+;(require 'lsp)
+;(add-hook 'd-mode-hook #'lsp)
+;(lsp-register-client
+;    (make-lsp-client
+;        :new-connection (lsp-stdio-connection '("/home/zac/.dub/packages/.bin/dls-latest/dls"))
+;        :major-modes '(d-mode)
+;        :server-id 'dls))
 
 (defun my-backward-kill-word ()
   "Kill words backward my way."
@@ -177,10 +159,6 @@
             :desc "org-roam-show-graph" "g" #'org-roam-show-graph
             :desc "org-roam-capture" "c" #'org-roam-capture))
 
-(use-package! org-journal
-  :config
-  (setq org-journal-dir "~/org/roam/"))
-
 ; display superscripts/subscripts normally
 (setq font-latex-fontify-script nil)
 
@@ -218,16 +196,36 @@
 ; pdf dark mode hook
 (add-hook 'pdf-tools-enabled-hook 'pdf-view-midnight-minor-mode)
 
-(setq deft-directory "~/Documents/Google/deft")
+(setq org-directory "~/Documents/Google/org")
+(setq org-roam-directory "~/Documents/Google/org/roam")
+(setq deft-directory org-roam-directory)
+(setq org-agenda-files '("~/Documents/Google/org/roam/agenda")) ; https://stackoverflow.com/a/11384907
 
 ; https://www.reddit.com/r/emacs/comments/e72m9j/evilsurround_shortcuts_in_doom_coming_from/f9uvh9t/
 (after! evil-surround
-  (let ((pairs '((?g "$" . "$") 
-                 (?h "(" . ")") 
-                 (?j "[" . "]") 
-                 (?k "{" . "}") 
-                 (?l "<" . ">") 
-                 (?ø "'" . "'") 
+  (let ((pairs '((?g "$" . "$")
+                 (?h "(" . ")")
+                 (?j "[" . "]")
+                 (?k "{" . "}")
+                 (?l "<" . ">")
+                 (?ø "'" . "'")
                  (?æ "\"" . "\""))))
     (prependq! evil-surround-pairs-alist pairs)
     (prependq! evil-embrace-evil-surround-keys (mapcar #'car pairs))))
+
+; autosave org mode buffers https://emacs.stackexchange.com/a/38068
+;(add-hook 'auto-save-hook 'org-save-all-org-buffers) ; escapes insert mode?
+
+
+; (defun open-org-agenda-files ()
+;   "Browse your `org-agenda-files' dir."
+;   (interactive)
+;   (unless (file-directory-p org-agenda-files)
+;     (make-directory org-agenda-files t))
+;   (doom-project-browse org-agenda-files))
+
+(after! org
+  (setq org-agenda-span 10) ; https://stackoverflow.com/a/32426234
+  (setq org-agenda-start-on-weekday nil)
+  (setq org-todo-keywords
+    '((sequence "TODO(t)" "EXAM(e)" "WAIT(w)" "|" "DONE(d)" "KILL(k)"))))
