@@ -1,7 +1,7 @@
 configuration {
 /*	modi: "window,run,ssh";*/
-	width: 33;
-	lines: 50;
+	/* width: 33; */ // https://www.reddit.com/r/qtools/comments/pes5ht/what_has_replaced_lines_config_file_item/hazeri7/
+	/* lines: 50; */
 /*	columns: 1;*/
 	font: "Iosevka 16";
 /*	bw: 1;*/
