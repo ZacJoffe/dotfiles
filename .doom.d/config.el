@@ -59,7 +59,7 @@
 (setq projectile-project-search-path '("~/Documents/Code"))
 
 ;(after! smartparens (smartparens-global-mode -1)) ; no long correct https://github.com/hlissner/doom-emacs/blob/develop/docs/faq.org#how-to-disable-smartparensautomatic-parentheses-completion
-(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
+;(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
 ; load doom themes
 ;(require 'doom-themes)
@@ -127,9 +127,9 @@
     (setq show-trailing-whitespace t)))
 
 ; smoother scrolling
-(require 'sublimity)
-(require 'sublimity-scroll)
-(sublimity-mode 1)
+;(require 'sublimity)
+;(require 'sublimity-scroll)
+;(sublimity-mode 1)
 
 ; vim-like relative line numbers
 (setq display-line-numbers-type 'relative)
@@ -228,4 +228,17 @@
   (setq org-agenda-span 10) ; https://stackoverflow.com/a/32426234
   (setq org-agenda-start-on-weekday nil)
   (setq org-todo-keywords
-    '((sequence "TODO(t)" "EXAM(e)" "WAIT(w)" "|" "DONE(d)" "KILL(k)"))))
+    '((sequence "TODO(t)" "EXAM(e)" "WAIT(w)" "|" "DONE(d)" "KILL(k)" "SKIPPED(s)" "LATE(s)"))))
+
+;(setq display-line-numbers-mode 1) ; always show line numbers
+;(global-display-line-numbers-mode)
+
+
+; syntax highlighting with minted for org latex exports
+; https://stackoverflow.com/a/21007117
+(setq org-latex-listings 'minted)
+(setq org-latex-pdf-process
+      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
