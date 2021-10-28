@@ -3,8 +3,8 @@
 ;; Place your private configuration here
 
 ;; manually set the shell
-;; (setq shell-file-name "/bin/bash")
-(setq shell-file-name "/usr/bin/zsh")
+(setq shell-file-name "/bin/bash")
+;(setq shell-file-name "/usr/bin/zsh")
 
 ;; add stuff to path
 (add-to-list 'exec-path "~/.cargo/bin")
@@ -12,12 +12,6 @@
 
 (electric-pair-mode 1)
 (add-hook 'after-change-major-mode-hook (lambda() (electric-pair-mode -1)))
-
-; enable tab-jump-out minor mode everywhere
-;(add-hook 'prog-mode-hook 'tab-jump-out-mode)
-;(add-hook 'org-mode-hook 'tab-jump-out-mode)
-;(add-hook 'markdown-mode-hook 'tab-jump-out-mode)
-
 
 ; hook for flyspell in org/markdown mode
 (add-hook 'org-mode-hook 'flyspell-mode)
@@ -30,17 +24,10 @@
 ; (setq doom-font (font-spec :family "Hack" :size 22 :weight 'semi-light))
 ; (setq doom-font (font-spec :family "DejaVu Sans Mono" :size 22 :weight 'light))
 ; (setq doom-font (font-spec :family "Roboto Mono" :size 22 :weight 'semi-light))
-(setq doom-font (font-spec :family "Iosevka" :size 26 :weight 'light)
-      doom-variable-pitch-font (font-spec :family "Iosevka"))
+(setq doom-font (font-spec :family "Iosevka Fixed" :size 26 :weight 'light)
+      doom-variable-pitch-font (font-spec :family "Iosevka" :size 26 :weight 'light))
 
-; (map! :m "/" #'swiper)
-;(map! :m "/" #'counsel-grep-or-swiper)
-;(map! :m "?" #'+default/search-project)
 (map! :m "?" #'consult-line)
-
-; use rg instead of grep for counsel grp
-(setq counsel-grep-base-command
- "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
 
 ;(debug-on-variable-change 'company-active-map)
 ;(define-key! company-active-map
@@ -68,17 +55,12 @@
 (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
       doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
-(load-theme 'doom-nord t)
-(setq doom-themes-treemacs-theme "doom-nord") ; use the colorful treemacs theme
+(load-theme 'doom-dracula t)
+(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+(doom-themes-treemacs-config)
 
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
-
-;; Tell emacs where is your personal elisp lib dir
-;(add-to-list 'load-path "~/Documents/Code/tab-jump-out")
-
-;; load the packaged named xyz.
-;(load "tab-jump-out") ;; best not to include the ending “.el” or “.elc”
 
 ;(require 'lsp)
 ;(add-hook 'd-mode-hook #'lsp)
@@ -188,10 +170,10 @@
 ;  (set-lsp-priority! 'clangd 1))  ; ccls has priority 0
 
 ; zoom in all buffers
-(defadvice text-scale-increase (around all-buffers (arg) activate)
-  (dolist (buffer (buffer-list))
-    (with-current-buffer buffer
-      ad-do-it)))
+;(defadvice text-scale-increase (around all-buffers (arg) activate)
+;  (dolist (buffer (buffer-list))
+;    (with-current-buffer buffer
+;      ad-do-it)))
 
 ; pdf dark mode hook
 (add-hook 'pdf-tools-enabled-hook 'pdf-view-midnight-minor-mode)
@@ -233,7 +215,6 @@
 ;(setq display-line-numbers-mode 1) ; always show line numbers
 ;(global-display-line-numbers-mode)
 
-
 ; syntax highlighting with minted for org latex exports
 ; https://stackoverflow.com/a/21007117
 (setq org-latex-listings 'minted)
@@ -242,3 +223,5 @@
         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
+; override doom's default (jk)
+(setq evil-escape-key-sequence "ESC")
