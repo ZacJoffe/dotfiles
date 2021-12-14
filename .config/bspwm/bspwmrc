@@ -1,23 +1,20 @@
 #! /bin/sh
 
-## monitors setup
-# current setup is two monitors - left is the main one ultrawide (21:9) with 7 workspaces,
-# right monitor an normal 16:9 monitor with only 3 workspaces
-#
-# generally, I use that right monitor for slack/discord and music
-bspc monitor DP-2 -d I II III IV V VI VII
-bspc monitor DP-4 -d VIII IX X
+bspc monitor DP-0 -d I II III IV V VI
+bspc monitor DP-2 -d VII VIII IX X
 
 # swallow - not used currently
 # pidof bspswallow || bspswallow & #
 
 # randomly select a wallpaper
-wallpaper=$(ls ~/Wallpapers/Landscapes/* | shuf -n 1)
-wal -i $wallpaper -n
-source ~/.cache/wal/colors.sh
+wallpaper=$(ls ~/Wallpapers/Landscapes/* | shuf --random-source=/dev/urandom -n 1)
+
+## PYWAL
+#wal -i $wallpaper -n
+#source ~/.cache/wal/colors.sh
 
 # set randomized wallpaper from start of config with feh
-feh --bg-fil $wallpaper
+feh --bg-fill $wallpaper
 
 ## bspc configs
 # pywal border colors
@@ -51,17 +48,17 @@ bspc config gapless_monocle      false
 # force these programs to start on a specific desktop
 bspc rule -a Steam desktop='^2' follow=off
 bspc rule -a discord desktop='^10'
-bspc rule -a Slack desktop='^10'
+#bspc rule -a Slack desktop='^10'
 # this one is broken https://github.com/baskerville/bspwm/issues/291
-bspc rule -a Spotify desktop='^10'
+#bspc rule -a Spotify desktop='^10'
 
 # force tiling/floating
-bspc rule -a Gimp state=floating follow=on
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
-bspc rule -a Zathura state=tiled
-bspc rule -a yad state=floating
+#bspc rule -a Gimp state=floating follow=on
+#bspc rule -a mplayer2 state=floating
+#bspc rule -a Kupfer.py focus=on
+#bspc rule -a Screenkey manage=off
+#bspc rule -a Zathura state=tiled
+#bspc rule -a yad state=floating
 bspc rule -a Emacs state=tiled
 
 ## autostart
@@ -69,13 +66,14 @@ bspc rule -a Emacs state=tiled
 sxhkd &
 
 # display warmer
-redshift &
+#redshift &
 
 # notification manager
 dunst &
 
 # compositor
-picom --experimental-backends -b
+#picom --experimental-backends -b
+picom &
 
 # autostart jack
 jack_control start
@@ -89,3 +87,7 @@ xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2)
 # clipboard manager
 greenclip daemon
 
+wmname LG3D # hack java programs to work
+
+# matlab hack
+export _JAVA_AWT_WM_NONREPARENTING=1
