@@ -1,20 +1,15 @@
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.local/share/nvim/plugged')
-
 " Declare the list of plugins.
 Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
-Plug 'justinmk/vim-sneak'
 Plug 'bkad/CamelCaseMotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'psliwka/vim-smoothie'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'fatih/vim-go'
-Plug 'rust-lang/rust.vim'
 "Plug 'christoomey/vim-tmux-navigator'
 Plug 'arcticicestudio/nord-vim'
 Plug 'mbbill/undotree'
@@ -22,7 +17,6 @@ Plug 'machakann/vim-sandwich'
 Plug 'rbgrouleff/bclose.vim' " dependency for ranger
 Plug 'francoiscabrol/ranger.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'antoinemadec/coc-fzf'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -70,80 +64,6 @@ set matchpairs+=<:>
 
 " let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''", '<':'>'}
 let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
-
-""" COC """
-"autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-"inoremap <silent> <C-o> :call CocActionAsync('showSignatureHelp')<cr>
-"
-let g:coc_snippet_next = '<tab>'
-
-function! SetupCommandAbbrs(from, to)
-  exec 'cnoreabbrev <expr> '.a:from
-        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
-        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Use C to open coc config
-call SetupCommandAbbrs('C', 'CocConfig')
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-set signcolumn=yes
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" coc extensions
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-snippets', 'coc-clangd', 'coc-go', 'coc-python', 'coc-rls']
-"
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" if autocomplete menu is open, select option with tab
-"
-" otherwise, escape a bunch of characters using tab
-" the syntax is black magic, as far as I can tell this works for the following
-" chars:
-" "[", "]", "<", ">", "(", ")", "{", "}", ";", "'", "\"", "$"
-"inoremap <expr> <Tab> search('\%#[][<>(){};''"`]', 'n') ? '<Right>' : '<Tab>'
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : search('\%#[][<>(){};''"`$]', 'n') ? '<Right>' : '<Tab>'
-
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
 
