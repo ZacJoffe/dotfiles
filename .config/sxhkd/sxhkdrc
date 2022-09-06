@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 #
 # wm independent hotkeys
@@ -15,7 +15,7 @@ super + slash
 
 # web browser - firefox
 super + backslash
-	firefox
+	firefox-beta
 
 # program launcher
 super + @space
@@ -30,6 +30,7 @@ super + v
 	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # show a formatted list of sxhkd hotkeys in rofi with fuzzy searching
+# TODO broken
 super + F1
     ~/.config/sxhkd/show_help.sh
 
@@ -118,6 +119,7 @@ super + {1-9,0}
 	bspc desktop -f '^{1-9,10}'
 
 # select window to focus with rofi
+# TODO broken
 super + shift + @space
     ~/.config/sxhkd/select_node.sh
 
@@ -217,20 +219,38 @@ super + alt + c
 	picom --experimental-backends -b
 
 #
+# dunst (notifications)
+#
+
+# close all notifications
+super + F2
+	dunstctl close-all
+
+# show notification history
+super + F3
+	dunstctl history-pop
+
+
+#
 # maim
 #
 
 # screenshot, upload to imgur
-super + Print
-	maim -su /tmp/screenshot.png; bash ~/Documents/Code/imgur-uploader/uploader.sh /tmp/screenshot.png | xclip -selection clipboard $argv;
+#super + Print
+#	maim -su /tmp/screenshot.png; bash ~/Documents/Code/imgur-uploader/uploader.sh /tmp/screenshot.png | xclip -selection clipboard $argv;
 
-super + z
-	maim -su /tmp/screenshot.png; bash ~/Documents/Code/imgur-uploader/uploader.sh /tmp/screenshot.png | xclip -selection clipboard $argv;
+#super + z
+#	maim -su /tmp/screenshot.png; bash ~/Documents/Code/imgur-uploader/uploader.sh /tmp/screenshot.png | xclip -selection clipboard $argv;
 
 # screenshot, copy to clipboard
-super + shift + Print
-	maim -s | xclip -selection clipboard -t image/png
+super + Print
+    maim -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i
+	#maim -s | xclip -selection clipboard -t image/png
 
-super + shift + z
-	maim -s | xclip -selection clipboard -t image/png
+super + ctrl + Print
+    maim -s --format png ~/Downloads/temp.png
+
+super + z
+    maim -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i
+	#maim -s | xclip -selection clipboard -t image/png
 

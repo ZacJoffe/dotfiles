@@ -67,6 +67,7 @@ bspc rule -a discord desktop='^10'
 #bspc rule -a Zathura state=tiled
 #bspc rule -a yad state=floating
 bspc rule -a Emacs state=tiled
+bspc rule -a matplotlib state=floating
 
 ## autostart
 # hotkey manager
