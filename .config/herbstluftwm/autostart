@@ -26,7 +26,8 @@ hc keybind $Mod-w close
 hc keybind $Mod-Return spawn alacritty # use your $TERMINAL with xterm as fallback
 hc keybind $Mod-space spawn rofi -show drun
 
-hc keybind $Mod-slash spawn emacs
+#hc keybind $Mod-slash spawn emacs
+hc keybind $Mod-slash spawn emacsclient --create-frame
 hc keybind $Mod-backslash spawn firefox
 
 hc keybind $Mod-Shift-p spawn /home/zac/go/bin/screenshot -su
@@ -187,8 +188,8 @@ hc keybind XF86AudioLowerVolume spawn amixer set Master 10%-
 
 hc keybind XF86AudioRaiseVolume spawn amixer set Master 10%+
 
-hc keybind XF86MonBrightnessUp spawn light -A 10
-hc keybind XF86MonBrightnessDown spawn light -U 10
+hc keybind XF86MonBrightnessUp spawn light -A 5
+hc keybind XF86MonBrightnessDown spawn light -U 5
 
 hc keybind XF86AudioMute spawn amixer set Master toggle
 
