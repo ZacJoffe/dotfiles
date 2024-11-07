@@ -1,0 +1,14 @@
+background-color=#282a36
+text-color=#ffffff
+border-color=#282a36
+font=Iosevka 14
+output=DP-2
+
+[urgency=low]
+border-color=#282a36
+
+[urgency=normal]
+border-color=#f1fa8c
+
+[urgency=high]
+border-color=#ff5555
