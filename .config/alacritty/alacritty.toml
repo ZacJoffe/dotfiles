@@ -1,0 +1,65 @@
+[general]
+import = ["/home/zac/.config/alacritty/dracula.toml"]
+live_config_reload = true
+
+[font]
+size = 16.0
+
+[font.bold]
+family = "Iosevka Term"
+style = "Light"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "Iosevka Term"
+style = "Light"
+
+[font.normal]
+family = "Iosevka Term"
+style = "Light"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "Paste"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Copy"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[window.padding]
+x = 2
+y = 2
+
+
