@@ -1,13 +1,14 @@
 #! /bin/sh
 
-bspc monitor DP-0 -d I II III IV V VI
-bspc monitor DP-2 -d VII VIII IX X
+bspc monitor DP-2 -d I II III IV V VI VII
+bspc monitor DP-0 -d VIII IX X
 
 # swallow - not used currently
 # pidof bspswallow || bspswallow & #
 
 # randomly select a wallpaper
-wallpaper=$(ls ~/Wallpapers/Landscapes/* | shuf --random-source=/dev/urandom -n 1)
+#wallpaper=$(ls ~/Wallpapers/Landscapes/* | shuf --random-source=/dev/urandom -n 1)
+wallpaper="/home/zac/Documents/Google/Wallpapers/wallhaven-n6xdv6.jpg"
 
 ## PYWAL
 #wal -i $wallpaper -n
@@ -85,19 +86,27 @@ dunst &
 picom &
 
 # autostart jack
-jack_control start
+#jack_control start
 
 # bar(s)
-# ~/.config/polybar/launch.sh
-tint2 &
+~/.config/polybar/launch.sh
+#tint2 &
 # tint2 correct behaviour for overlapping windows
 # NOTE this seems to fail once windows sleep
 xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2)
 
 # clipboard manager
-greenclip daemon
+#greenclip daemon
+clipcatd
 
 wmname LG3D # hack java programs to work
 
 # matlab hack
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+# gtk 4 theming
+export GTK_THEME=Dracula
+
+# fix cursor turning into an x on the desktop
+# https://wiki.archlinux.org/title/Cursor_themes#Change_X_shaped_default_cursor
+xsetroot -cursor_name left_ptr

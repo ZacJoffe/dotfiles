@@ -6,28 +6,30 @@
 
 # terminal emulator
 super + Return
-	alacritty
-	# termite
+    alacritty
+    # termite
 
 # text editor - emacs
 super + slash
-	emacsclient --create-frame
+    emacs
+    #emacsclient --create-frame
 
 # web browser - firefox
 super + backslash
-	firefox-beta
+    firefox
 
 # program launcher
 super + @space
-	rofi -modi drun -show drun # dmenu_run
+    rofi -modi drun -show drun # dmenu_run
 
 # make sxhkd reload its configuration files:
 super + Escape
-	pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd
 
 # show clipmenu
 super + v
-	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+    clipcat-menu
+    #rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # show a formatted list of sxhkd hotkeys in rofi with fuzzy searching
 # TODO broken
@@ -39,24 +41,24 @@ super + F1
 #
 
 # quit bspwm normally
-super + alt + Escape
-	bspc quit
+#super + alt + Escape
+#    bspc quit
 
 # close and kill
 super + {_,shift + }w
-	bspc node -{c,k}
+    bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
 super + m
-	bspc desktop -l next
+    bspc desktop -l next
 
 # send the newest marked node to the newest preselected node
 super + y
-	bspc node newest.marked.local -n newest.!automatic.local
+    bspc node newest.marked.local -n newest.!automatic.local
 
 # swap the current node and the biggest node on the current desktop
 super + g
-	bspc node -s biggest.local
+    bspc node -s biggest.local
 
 #
 # state/flags
@@ -64,11 +66,11 @@ super + g
 
 # set the window state
 super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,\~fullscreen}
+    bspc node -t {tiled,pseudo_tiled,floating,\~fullscreen}
 
 # set the node flags
 super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
+    bspc node -g {marked,locked,sticky,private}
 
 #
 # focus/swap
@@ -79,53 +81,53 @@ super + ctrl + {m,x,y,z}
 #	bspc node -{f,s} {west,south,north,east}
 
 super + {h,j,k,l}
-	bspc node -f {west,south,north,east}
+    bspc node -f {west,south,north,east}
 
 super + shift + {h,j,k,l}
-	~/.config/sxhkd/smart_move.sh {west,south,north,east}
+    ~/.config/sxhkd/smart_move.sh {west,south,north,east}
 
 
 # focus the node for the given path jump
 super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+    bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }n
-	bspc node -f {next,prev}.local
+    bspc node -f {next,prev}.local
 
 # focus the last node/desktop
 alt + Tab
-	bspc node -f last.local
+    bspc node -f last.local
 
 alt + shift + Tab
-	bspc desktop -f last
+    bspc desktop -f last
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
+    bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
 super + {grave,Tab}
-	bspc {node,desktop} -f last
+    bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
 super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
+    bspc wm -h off; \
+    bspc node {older,newer} -f; \
+    bspc wm -h on
 
 # focus given desktop
 super + {1-9,0}
-	bspc desktop -f '^{1-9,10}'
+    bspc desktop -f '^{1-9,10}'
 
 # select window to focus with rofi
 # TODO broken
-super + shift + @space
-    ~/.config/sxhkd/select_node.sh
+#super + shift + @space
+#    ~/.config/sxhkd/select_node.sh
 
 # send to the given desktop and follow
 super + shift + {1-9,0}
-	bspc node -d '^{1-9,10}' --follow
+    bspc node -d '^{1-9,10}' --follow
 
 # Move current window to a pre-selected space
 super + shift + m
@@ -137,15 +139,15 @@ super + shift + m
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+    bspc node -p {west,south,north,east}
 
 # preselect the ratio
 super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
+    bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
 super + ctrl + space
-	bspc node -p cancel
+    bspc node -p cancel
 
 # cancel the preselection for the focused desktop
 #super + ctrl + shift + space
@@ -166,7 +168,7 @@ super + ctrl + shift + {h,j,k,l}
 
 # move a floating window
 super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Expand/contract a window by moving one of its side outward/inward
 # TODO - currently broken, see for reference: https://my-take-on.tech/2020/07/03/some-tricks-for-sxhkd-and-bspwm/
@@ -190,21 +192,21 @@ super + shift + r
 # pause/play
 XF86AudioPlay
     playerctl play-pause
-	#cmus-remote -u || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+    #cmus-remote -u || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 # next song
 XF86AudioNext
     playerctl next
-	#cmus-remote -n || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+    #cmus-remote -n || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 # previous song
 XF86AudioPrev
     playerctl previous
-	#cmus-remote -r || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+    #cmus-remote -r || dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 
 # mute master volume
-XF86AudioMute
-	amixer set Master toggle
+#XF86AudioMute
+#    amixer set Master toggle
 
 #
 # picom
@@ -212,11 +214,11 @@ XF86AudioMute
 
 # turn off
 super + alt + x
-	pkill picom
+    pkill picom
 
 # turn on
 super + alt + c
-	picom --experimental-backends -b
+    picom -b
 
 #
 # dunst (notifications)
@@ -224,11 +226,11 @@ super + alt + c
 
 # close all notifications
 super + F2
-	dunstctl close-all
+    dunstctl close-all
 
 # show notification history
 super + F3
-	dunstctl history-pop
+    dunstctl history-pop
 
 
 #
@@ -245,12 +247,15 @@ super + F3
 # screenshot, copy to clipboard
 super + Print
     maim -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i
-	#maim -s | xclip -selection clipboard -t image/png
+    #maim -s | xclip -selection clipboard -t image/png
 
 super + ctrl + Print
     maim -s --format png ~/Downloads/temp.png
 
 super + z
     maim -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i
-	#maim -s | xclip -selection clipboard -t image/png
+    #maim -s | xclip -selection clipboard -t image/png
+
+super + shift + s
+    maim -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i
 
