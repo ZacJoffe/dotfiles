@@ -1,5 +1,6 @@
 [general]
-import = ["/home/zac/.config/alacritty/dracula.toml"]
+# import = ["/home/zac/.config/alacritty/dracula.toml"]
+import = ["/home/zac/.config/alacritty/nord.toml"]
 live_config_reload = true
 
 [font]
