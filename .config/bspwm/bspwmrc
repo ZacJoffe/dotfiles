@@ -40,8 +40,8 @@ bspc config presel_feedback_color "#88c0d0"
 # faster refresh rate for moving floating windows
 bspc config pointer_motion_interval 7ms
 
-# padding for tint2 bar
-bspc config top_padding 30
+# padding for bar
+bspc config -m DP-2 top_padding 30
 
 # borderless gaps, standard split ratio
 bspc config border_width         5
@@ -54,8 +54,9 @@ bspc config gapless_monocle      false
 
 ## bspc rules
 # force these programs to start on a specific desktop
-bspc rule -a Steam desktop='^2' follow=off
-bspc rule -a discord desktop='^10'
+#bspc rule -a Steam desktop='^2' follow=off
+#bspc rule -a discord desktop='^10'
+
 #bspc rule -a Slack desktop='^10'
 # this one is broken https://github.com/baskerville/bspwm/issues/291
 #bspc rule -a Spotify desktop='^10'
@@ -70,13 +71,25 @@ bspc rule -a discord desktop='^10'
 bspc rule -a Emacs state=tiled
 bspc rule -a matplotlib state=floating
 
+## env vars
+# NOTE this must be done before starting background procs
+export SXHKD_SHELL=/usr/bin/dash # perf optimization
+export _JAVA_AWT_WM_NONREPARENTING=1 # matlab hack
+export GTK_THEME=Dracula # gtk 4 theming
+
 ## autostart
+# fix cursor turning into an x on the desktop
+# https://wiki.archlinux.org/title/Cursor_themes#Change_X_shaped_default_cursor
+xsetroot -cursor_name left_ptr
+
 # hotkey manager
-export SXHKD_SHELL=/usr/bin/dash # speed
 sxhkd &
 
 # display warmer
-#redshift &
+redshift &
+
+# clipboard manager
+clipcatd
 
 # notification manager
 dunst &
@@ -95,18 +108,6 @@ picom &
 # NOTE this seems to fail once windows sleep
 xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2)
 
-# clipboard manager
-#greenclip daemon
-clipcatd
 
 wmname LG3D # hack java programs to work
 
-# matlab hack
-export _JAVA_AWT_WM_NONREPARENTING=1
-
-# gtk 4 theming
-export GTK_THEME=Dracula
-
-# fix cursor turning into an x on the desktop
-# https://wiki.archlinux.org/title/Cursor_themes#Change_X_shaped_default_cursor
-xsetroot -cursor_name left_ptr
