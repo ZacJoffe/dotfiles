@@ -193,15 +193,15 @@ super + shift + r
 # https://www.reddit.com/r/kde/comments/ydv6px/how_do_i_make_playpause_media_keys_ignore_firefox/ituqx26/
 # pause/play
 XF86AudioPlay
-    playerctl --player=cmus,spotify,firefox play-pause
+    playerctl --player=cmus,ncspot,spotify,firefox play-pause
 
 # next song
 XF86AudioNext
-    playerctl --player=cmus,spotify,firefox next
+    playerctl --player=cmus,ncspot,spotify,firefox next
 
 # previous song
 XF86AudioPrev
-    playerctl --player=cmus,spotify,firefox previous
+    playerctl --player=cmus,ncspot,spotify,firefox previous
 
 # mute master volume
 #XF86AudioMute
