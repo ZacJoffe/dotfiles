@@ -1,6 +1,3 @@
-" General Settings
-set configversion 1.9
-set update.lastchecktime 1587957701584
 set smoothscroll true
 set modeindicator false
 
@@ -11,3 +8,10 @@ unbind <C-f>
 " vim: set filetype=tridactyl
 
 blacklistadd leetcode.com
+blacklistadd neetcode.io
+blacklistadd coderpad.io
+blacklistadd monkeytype.com
+blacklistadd codesignal.com
+blacklistadd localhost:8888
+blacklistadd hackerrank.com
+blacklistadd livecode.amazon.jobs

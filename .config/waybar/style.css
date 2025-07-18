@@ -3,14 +3,14 @@
     border: none;
     border-radius: 0;
     font-family: Iosevka;
-    font-size: 12pt;
+    font-size: 11pt;
     min-height: 0;
 }
 window#waybar {
-    opacity: 0.9;
-    background: @background-darker;
+    opacity: 1.0;
+    background: @background;
     color: @foreground;
-    border-bottom: 2px solid @background;
+    /* border-bottom: 2px solid @background; */
 }
 #workspaces button {
     padding: 0 10px;
@@ -23,10 +23,12 @@ window#waybar {
     background-image: linear-gradient(0deg, @selection, @background-darker);
 }
 #workspaces button.active {
-    background-image: linear-gradient(0deg, @purple, @selection);
+    background: @background;
+    color: @selection;
+    font-weight: bold;
 }
 #workspaces button.urgent {
-    background-image: linear-gradient(0deg, @red, @background-darker);
+    background-image: linear-gradient(0deg, @selection, @background-darker);
 }
 #taskbar button.active {
     background-image: linear-gradient(0deg, @selection, @background-darker);

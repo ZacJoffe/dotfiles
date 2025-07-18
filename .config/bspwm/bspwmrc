@@ -78,6 +78,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1 # matlab hack
 export GTK_THEME=Dracula # gtk 4 theming
 
 ## autostart
+# clipboard manager
+clipcatd
+
 # fix cursor turning into an x on the desktop
 # https://wiki.archlinux.org/title/Cursor_themes#Change_X_shaped_default_cursor
 xsetroot -cursor_name left_ptr
@@ -87,9 +90,6 @@ sxhkd &
 
 # display warmer
 redshift &
-
-# clipboard manager
-clipcatd
 
 # notification manager
 dunst &

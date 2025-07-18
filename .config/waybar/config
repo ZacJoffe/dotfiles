@@ -16,7 +16,8 @@
   "hyprland/workspaces": {
     "format": "{icon}",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1"
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "all-outputs": false
   },
   "hyprland/window": {
     "max-length": 128,

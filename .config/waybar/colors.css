@@ -1,7 +1,7 @@
-@define-color background-darker rgba(30, 31, 41, 230);
-@define-color background #282a36;
-@define-color selection #44475a;
-@define-color foreground #f8f8f2;
+/* @define-color background-darker rgba(30, 31, 41, 230); */
+/* @define-color background #282a36; */
+/* @define-color selection #44475a; */
+/* @define-color foreground #f8f8f2; */
 @define-color comment #6272a4;
 @define-color cyan #8be9fd;
 @define-color green #50fa7b;
@@ -10,3 +10,9 @@
 @define-color purple #bd93f9;
 @define-color red #ff5555;
 @define-color yellow #f1fa8c;
+
+/* @define-color background #3b4252; */
+@define-color background #2e3440;
+@define-color background-darker #2e3440;
+@define-color foreground #d8dee9;
+@define-color selection #81A1C1;
