@@ -23,11 +23,6 @@
     spacing: 0px;
     text-color: @nord4;
 }
-
-window {
-    height: 100%;
-}
-
 #inputbar {
     text-color: @nord3;
     padding: 6px;
@@ -93,4 +88,3 @@ window {
     background-color: @nord8;
     text-color: @nord4;
 }
-

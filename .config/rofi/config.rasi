@@ -3,7 +3,7 @@ configuration {
 	/* width: 33; */ // https://www.reddit.com/r/qtools/comments/pes5ht/what_has_replaced_lines_config_file_item/hazeri7/
 	/* lines: 50; */
 /*	columns: 1;*/
-	font: "Iosevka 16";
+	font: "Iosevka 22";
 /*	bw: 1;*/
 	location: 1;
 /*	padding: 5;*/
