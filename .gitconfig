@@ -20,6 +20,6 @@
 [difftool "nvimdiff"]
   cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [pull]
-	rebase = false
+  rebase = false
 [init]
-	defaultBranch = master
+  defaultBranch = master
